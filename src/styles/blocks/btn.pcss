@@ -1,0 +1,40 @@
+.btn {
+  $block: &;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &--rounded {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    border: 2px solid;
+    border-radius: 50%;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+
+  &--rounded &__icon {
+    position: relative;
+    left: 4.6%;
+    width: 0.33em;
+    height: 0.33em;
+
+    &--prev {
+      left: -4.6%;
+      transform: rotate(180deg);
+    }
+  }
+}
