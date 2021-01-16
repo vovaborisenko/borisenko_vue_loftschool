@@ -1,39 +1,39 @@
 html {
-  @include desktop {
-    font-size: 15px;
-  }
-  @include tablets {
-    font-size: 14px;
-  }
-}
-body,
-html {
   height: 100%;
+  box-sizing: border-box;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-text;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
 }
 
 body {
-  font-family: 'Open Sans', Helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 1.42;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: $text-color;
-}
+  height: 100%;
+  font-size: 14px;
 
-.wrapper {
-  overflow: hidden;
-  min-height: 100%;
-  position: relative;
+  @include desktop {
+    font-size: 16px;
+  }
 }
 
 .container {
+  width: 100%;
+  max-width: 1497px;
+  padding: 0 30px;
   margin: 0 auto;
-  max-width: 1480px;
-  width: 95%;
-  // width: 1490px;
 
-  @include phones {
-    width: 85%;
+  @include tablets {
+    padding: 0 40px
+  }
+
+  @include desktop {
+    padding: 0 60px
   }
 }
 
@@ -45,10 +45,11 @@ body {
 button {
   border: 0;
   cursor: pointer;
-}
 
-* {
-  box-sizing: border-box;
+  &[type="button"] {
+    cursor: pointer;
+    background-color: transparent;
+  }
 }
 
 ul {
@@ -72,12 +73,8 @@ p {
   padding: 0;
 }
 
-button[type="button"] {
-  cursor: pointer;
-  background-color: transparent;
-}
-
 a {
+  text-decoration: none;
   color: inherit;
   cursor: pointer;
 }
@@ -85,5 +82,4 @@ a {
 img {
   display: block;
   max-width: 100%;
-  max-height: 100%;
 }

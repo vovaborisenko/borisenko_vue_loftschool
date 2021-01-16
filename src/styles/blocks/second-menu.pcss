@@ -1,0 +1,26 @@
+.second-menu {
+  overflow: hidden;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -11px -44px;
+  }
+
+  &__item {
+    margin: 11px 44px;
+    line-height: 19px;
+  }
+
+  &__link {
+    transition: 0.2s;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &:active {
+      color: $color-accent-dark;
+    }
+  }
+}
