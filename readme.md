@@ -1,5 +1,9 @@
 # Учебный шаблон проекта Portfolio
 
+Дизайн макет: [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1)
+
+Исполнитель: [Владимир Борисенко](https://github.com/vovaborisenko)
+
 > Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/), а так же 
 [последняя версия Yarn](https://yarnpkg.com/ru/docs/install)
 
