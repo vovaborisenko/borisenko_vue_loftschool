@@ -5,6 +5,10 @@
     &:not(:first-child) {
       margin-left: 21px;
     }
+
+    &--menu:not(:first-child) {
+      margin-left: 39px;
+    }
   }
 
   &__link {
@@ -13,21 +17,42 @@
     justify-content: center;
     width: 1em;
     height: 1em;
-    border: 1px solid;
-    border-radius: 50%;
-    opacity: 0.3;
     transition: 0.2s;
 
-    &:hover {
-      opacity: 1;
+    &--accent {
+      &:hover {
+        color: $color-accent;
+      }
+
+      &:active {
+        color: $color-accent-dark;
+      }
     }
 
-    &:active {
-      opacity: 0.8;
+    &--rounded {
+      border: 1px solid;
+      border-radius: 50%;
+    }
+
+    &--opacity_03 {
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
+        opacity: 0.8;
+      }
     }
   }
 
   &__icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  &__link--rounded &__icon {
     width: 0.5em;
     height: 0.5em;
   }

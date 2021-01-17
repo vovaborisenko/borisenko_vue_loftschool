@@ -1,0 +1,26 @@
+.header
+  .container.header__container
+    .header__logo
+      +logo
+    button.header__open-menu.js-menu-open(type="button")
+      +icon('menu', 'icon')
+    .header__popup-menu.header__popup-menu--closed.js-menu
+      .popup-menu
+        .popup-menu__logo
+          +logo
+        .popup-menu__content
+          button.popup-menu__close.js-menu-close(type="button")
+            +icon('cross', 'icon')
+          nav
+            ul.popup-menu__list
+              - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы']
+              each item in menu
+                li.popup-menu__item
+                  a.popup-menu__link(href="#")= item
+          .popup-menu__socials
+            ul.socials
+              - var socials = ['insta', 'vk', 'github', 'envelope']
+              each social in socials
+                li.socials__item.socials__item--menu
+                  a.socials__link.socials__link--accent(href="#")
+                    +icon(`${social}`, 'socials__icon')

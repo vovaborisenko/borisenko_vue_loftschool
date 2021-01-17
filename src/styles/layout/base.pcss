@@ -5,6 +5,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $color-text;
+  overflow: hidden;
 }
 
 *,
@@ -16,6 +17,7 @@ html {
 body {
   height: 100%;
   font-size: 14px;
+  overflow: auto;
 
   @include desktop {
     font-size: 16px;
@@ -82,4 +84,21 @@ a {
 img {
   display: block;
   max-width: 100%;
+}
+
+.icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.visually-hidden {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding:0 !important;
+	border:0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden;
 }

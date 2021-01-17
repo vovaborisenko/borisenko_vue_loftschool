@@ -1,0 +1,78 @@
+.popup-menu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @include phones {
+    background: url(~images/content/bg-reviews-tablet.jpg) right / cover;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 49px;
+    left: 40px;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    padding: 46px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 600;
+    color: $color-text-inverse;
+    background: $color-background-inverse;
+    overflow: auto;
+
+    @include phones {
+      max-width: 330px;
+    }
+  }
+
+  &__list {
+    margin: 168px 0 118px;
+  }
+
+  &__item {
+    &:not(:first-child) {
+      margin-top: 23px;
+    }
+  }
+
+  &__link {
+    transition: 0.2s;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &:active {
+      color: $color-accent-dark;
+    }
+  }
+
+  &__socials {
+    font-size: 25px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 31px;
+    right: 30px;
+    padding: 3px;
+    font-size: 20px;
+    transition: 0.2s;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &:active {
+      color: $color-accent-dark;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-footer.footer
+.footer
   .container
     .footer__copyright &copy; 2020
     .footer__title Владимир Астахов
@@ -16,7 +16,7 @@ footer.footer
         - var socials = ['insta', 'vk', 'github', 'envelope']
         each social in socials
           li.socials__item
-            a.socials__link(href="#")
+            a.socials__link.socials__link--rounded.socials__link--opacity_03(href="#")
               +icon(`${social}`, 'socials__icon')
     .footer__aphorism
       .aphorism

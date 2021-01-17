@@ -6,11 +6,17 @@ block title
 block content
   .page
     .page__hero
+      header.page__header
+        include blocks/header.pug
+      .page__welcome
+        include blocks/welcome.pug
+      .page__about
+        include blocks/about.pug
 
       +image('content/user.jpg', 'user-pic')
       +icon('link', 'link-class')
       .icon-bg
     .page__reviews
       include blocks/reviews.pug
-    .page__footer
+    footer.page__footer
       include blocks/footer.pug
