@@ -1,0 +1,19 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  color: $color-link;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &__icon {
+    flex: none;
+    width: 1.61em;
+    height: 1.61em;
+  }
+
+  &__icon + &__text {
+    margin-left: 16px;
+  }
+}
