@@ -1,0 +1,28 @@
+.useful {
+  padding: 81px 0 260px;
+  background: no-repeat url(~images/content/bg-top-skills-tablet.png) center bottom / 100%,
+    $color-background url(~images/content/bg-skills-mobile.jpg) center / cover;
+
+  @include phones {
+    background: no-repeat url(~images/content/bg-top-skills-tablet.png) center bottom / 486px,
+      $color-background url(~images/content/bg-skills-mobile.jpg) center / cover;
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 700;
+  }
+
+  &__content {
+    margin: 28px 0 71px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  &__box {
+    margin-top: 62px;
+  }
+}
