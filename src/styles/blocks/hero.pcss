@@ -1,0 +1,29 @@
+.hero {
+  &__photo {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+
+  &__data {
+    width: 100%;
+    margin-top: 32px;
+    font-weight: 600;
+    table-layout: fixed;
+  }
+
+  &__td {
+    padding-top: 11px;
+
+    &:not(:first-child) {
+      padding-left: 10px;
+    }
+
+    &--label {
+      opacity: 0.3;
+    }
+  }
+
+
+}
