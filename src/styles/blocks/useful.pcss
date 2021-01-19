@@ -8,10 +8,22 @@
       $color-background url(~images/content/bg-skills-mobile.jpg) center / cover;
   }
 
+  @include tablets {
+    padding: 90px 0 336px;
+    text-align: center;
+  }
+
   &__title {
     font-size: 24px;
     line-height: 36px;
     font-weight: 700;
+
+    @include tablets {
+      width: 57%;
+      margin: 0 auto;
+      font-size: 30px;
+      line-height: 41px;
+    }
   }
 
   &__content {
@@ -20,9 +32,18 @@
     line-height: 24px;
     font-weight: 600;
     opacity: 0.8;
+
+    @include tablets {
+      width: 70%;
+      margin: 28px auto 52px;
+    }
   }
 
   &__box {
     margin-top: 62px;
+
+    @include tablets {
+      margin-top: 38px;
+    }
   }
 }

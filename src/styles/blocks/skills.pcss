@@ -10,11 +10,20 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 30Px -14Px -4Px;
+
+    @include tablets {
+      margin-top: 20px;
+    }
   }
 
   &__item {
     width: 123px;
     height: 123px;
     margin: 4Px 10Px;
+
+    @include tablets {
+      width: 142px;
+      height: 142px;
+    }
   }
 }

@@ -4,13 +4,17 @@ section.projects
     .projects__slider
       .slider
         .slider__list
-          .slider__item
+          .slider__item(data-index="2")
             +image('content/slide-1.jpg').slider__img
         .slider__previews
           - var n = 0;
           while n < 4
-            .slider__preview
-              +image(`content/preview-${++n}.jpg`)
+            if n == 0
+              .slider__preview.slider__preview--active
+                +image(`content/preview-${++n}.jpg`)
+            else
+              .slider__preview
+                +image(`content/preview-${++n}.jpg`)
         .slider__actions
           button.btn.btn--rect(type="button")
             +icon('arrow-left').btn__arrow.btn__arrow--next

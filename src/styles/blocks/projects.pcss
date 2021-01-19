@@ -1,6 +1,11 @@
 .projects {
   padding: 91px 0 100px;
   color: $color-text-inverse;
+  overflow: hidden;
+
+  @include tablets {
+    padding: 119px 0 109px;
+  }
 
   &__title {
     margin-bottom: 24px;
@@ -8,13 +13,31 @@
     line-height: 33px;
     font-weight: 700;
     text-align: center;
+
+    @include tablets {
+      margin-bottom: 46px;
+      font-size: 30px;
+      line-height: 41px;
+      text-align: left;
+    }
   }
 
   &__slider {
     margin: 0 -30px;
+
+    @include tablets {
+      width: 93%;
+      margin: 0;
+    }
   }
 
   &__desc {
     margin-top: 60px;
+
+    @include tablets {
+      width: 70%;
+      margin: 55px auto 0;
+      text-align: center;
+    }
   }
 }

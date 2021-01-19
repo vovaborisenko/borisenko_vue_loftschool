@@ -2,12 +2,31 @@
   padding: 70px 0 57px;
   background: $color-background url(~images/content/bg-reviews-phone.jpg) center / cover;
 
+  @include tablets {
+    padding: 120px 0 147px;
+    background-image: url(~images/content/bg-reviews-tablet.jpg);
+  }
+
+  &__header {
+    @include tablets {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   &__title {
     margin-bottom: 20px;
     font-size: 24px;
     line-height: 33px;
     font-weight: 700;
     text-align: center;
+
+    @include tablets {
+      margin-right: 27px;
+      margin-bottom: 0;
+      font-size: 30px;
+      line-height: 41px;
+    }
   }
 
   &__actions {
@@ -17,9 +36,35 @@
     max-width: 134px;
     margin: 0 auto;
     font-size: 53px;
+
+    @include tablets {
+      flex: auto;
+      margin: 0;
+    }
   }
 
   &__list {
+    display: flex;
     margin-top: 55px;
+
+    @include tablets {
+      margin-top: 48px;
+      margin-left: -23px;
+    }
+  }
+
+  &__item {
+    @include tablets {
+      flex: 1 1 50%;
+      margin-left: 23px;
+    }
+
+    &:nth-child(2) {
+      display: none;
+
+      @include tablets {
+        display: block;
+      }
+    }
   }
 }

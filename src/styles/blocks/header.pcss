@@ -5,6 +5,16 @@
     justify-content: space-between;
   }
 
+  &__socials {
+    display: none;
+
+    @include tablets {
+      display: block;
+      margin: 11px 83px 0 auto;
+      font-size: 25px;
+    }
+  }
+
   &__popup-menu {
     position: fixed;
     top: 0;

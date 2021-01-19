@@ -5,11 +5,19 @@
     display: flex;
     flex-wrap: wrap;
     margin: -11px -44px;
+
+    @include tablets {
+      margin: -11px -29px;
+    }
   }
 
   &__item {
     margin: 11px 44px;
     line-height: 19px;
+
+    @include tablets {
+      margin: 11px 29px;
+    }
   }
 
   &__link {

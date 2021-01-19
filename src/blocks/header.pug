@@ -2,6 +2,13 @@
   .container.header__container
     .header__logo
       +logo
+    .header__socials
+      ul.socials
+        - var socials = ['insta', 'github', 'vk', 'envelope']
+        each social in socials
+          li.socials__item.socials__item--menu
+            a.socials__link.socials__link--opacity_03(href="#")
+              +icon(`${social}`, 'socials__icon')
     button.header__open-menu.js-menu-open(type="button")
       +icon('menu', 'icon')
     .header__popup-menu.header__popup-menu--closed.js-menu

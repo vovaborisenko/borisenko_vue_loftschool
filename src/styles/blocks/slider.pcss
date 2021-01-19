@@ -1,7 +1,24 @@
 .slider {
   position: relative;
 
+  &__item {
+    position: relative;
+
+    &::before {
+      content: attr(data-index);
+      position: absolute;
+      bottom: 0;
+      left: 100%;
+      font-size: 300px;
+      line-height: 0.8;
+      font-weight: 800;
+      color: #e6e6e6;
+      transform: translateX(-63px);
+    }
+  }
+
   &__img {
+    position: relative;
     width: 100%;
   }
 
@@ -11,10 +28,52 @@
     right: 0;
     font-size: 55px;
     color: $color-text;
+
+    @include tablets {
+      bottom: 10.75%;
+      left: 100%;
+      right: auto;
+      font-size: 33px;
+    }
   }
 
   &__previews {
     position: absolute;
+    right: 0;
+    bottom: 10.75%;
     display: none;
+    width: 74%;
+
+    @include tablets {
+      display: flex;
+    }
+  }
+
+  &__preview {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    &--active,
+    &:hover {
+      &::before {
+        border-color: $color-accent;
+      }
+    }
+
+    &:active {
+      &::before {
+        border-color: $color-accent-dark;
+      }
+    }
   }
 }

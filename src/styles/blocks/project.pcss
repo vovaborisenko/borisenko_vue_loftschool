@@ -1,6 +1,6 @@
 .project {
   &__tags {
-    display: flex;
+    display: inline-flex;
   }
 
   &__tag {
@@ -12,8 +12,16 @@
     background-color: $color-tag;
     border-radius: 40px;
 
+    @include tablets {
+      padding: 14px 22px;
+    }
+
     &:not(:first-child) {
       margin-left: 6px;
+
+      @include tablets {
+        margin-left: 8px;
+      }
     }
   }
 
@@ -22,6 +30,12 @@
     font-size: 24px;
     line-height: 30px;
     font-weight: 700;
+
+    @include tablets {
+      margin-bottom: 12px;
+      font-size: 30px;
+      line-height: 40px;
+    }
   }
 
   &__content {
@@ -34,5 +48,9 @@
   &__footer {
     margin-top: 31px;
     font-weight: 700;
+
+    @include tablets {
+      margin-top: 28px;
+    }
   }
 }

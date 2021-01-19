@@ -1,9 +1,26 @@
 .about {
+  &__container {
+    @include tablets {
+      display: flex;
+    }
+  }
+
+  &__hero {
+    @include tablets {
+      flex: 0 0 256px;
+      margin: 4px 62px 0 0;
+    }
+  }
+
   &__content {
     margin-top: 40px;
     line-height: 1.72;
     font-weight: 600;
     color: rgba($color-text, 0.8);
+
+    @include tablets {
+      margin: 0;
+    }
   }
 
   &__title {
@@ -12,10 +29,18 @@
     line-height: 36px;
     font-weight: 700;
     color: $color-text;
+
+    @include tablets {
+      margin-top: 10px;
+    }
   }
 
   &__desc {
     margin-top: 38px;
+
+    @include tablets {
+      margin-top: 36px;
+    }
   }
 
   &__footnote {
@@ -23,6 +48,10 @@
     margin-top: 62px;
     font-style: italic;
     font-weight: 400;
+
+    @include tablets {
+      margin-top: 35px;
+    }
 
     &::before {
       content: '*';
@@ -32,6 +61,12 @@
       font-size: 36px;
       line-height: 1;
       color: rgba($color-error, 0.5);
+
+      @include tablets {
+        top: 6px;
+        left: -46px;
+        font-size: 48px;
+      }
     }
   }
 }

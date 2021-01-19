@@ -4,6 +4,12 @@
     height: 170px;
     margin: 0 auto;
     border-radius: 50%;
+
+    @include tablets {
+      width: 200px;
+      height: 200px;
+      margin: 0;
+    }
   }
 
   &__data {
@@ -11,10 +17,20 @@
     margin-top: 32px;
     font-weight: 600;
     table-layout: fixed;
+
+    @include tablets {
+      margin-top: 12px;
+    }
   }
 
   &__td {
     padding-top: 11px;
+
+    &:first-child {
+      @include tablets {
+        width: 43%;
+      }
+    }
 
     &:not(:first-child) {
       padding-left: 10px;
