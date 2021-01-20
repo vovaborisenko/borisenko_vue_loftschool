@@ -20,6 +20,12 @@
         bottom: auto;
         transform: translateX(-48px);
       }
+
+      @include desktopHd {
+        top: 73px;
+        font-size: 400px;
+        transform: translateX(-56px);
+      }
     }
   }
 
@@ -41,6 +47,10 @@
       right: auto;
       font-size: 33px;
     }
+
+    @include desktopHd {
+      font-size: 50px;
+    }
   }
 
   &__previews {
@@ -52,6 +62,7 @@
 
     @include tablets {
       display: flex;
+      justify-content: flex-end;
     }
   }
 

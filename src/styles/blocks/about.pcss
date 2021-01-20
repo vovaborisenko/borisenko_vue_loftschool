@@ -5,6 +5,10 @@
     @include tablets {
       display: flex;
     }
+
+    @include desktop {
+      max-width: 1126px;
+    }
   }
 
   &__hero {
@@ -16,6 +20,11 @@
     @include desktop {
       flex-basis: 350px;
       margin: 0 109px 0 0;
+    }
+
+    @include desktopHd {
+      flex-basis: 370px;
+      margin-right: 75px;
     }
   }
 
@@ -63,6 +72,10 @@
     @include desktop {
       margin-top: 16px;
     }
+
+    @include desktopHd {
+      margin-top: 32px;
+    }
   }
 
   &__footnote {
@@ -77,6 +90,10 @@
 
     @include desktop {
       margin-top: 93px;
+    }
+
+    @include desktopHd {
+      margin-top: 77px;
     }
 
     &::before {

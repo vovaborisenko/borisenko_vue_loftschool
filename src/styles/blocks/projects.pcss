@@ -11,6 +11,10 @@
     padding: 145px 0 113px;
   }
 
+  @include desktopHd {
+    padding: 195px 0 209px;
+  }
+
   &__container {
     @include desktop {
       padding-right: 44px;
@@ -39,7 +43,9 @@
   }
 
   &__content {
-    display: flex;
+    @include desktop {
+      display: flex;
+    }
   }
 
   &__slider {
@@ -53,9 +59,14 @@
     @include desktop {
       margin-right: 122px;
     }
+
+    @include desktopHd {
+      margin-right: 162px;
+    }
   }
 
   &__desc {
+    position: relative;
     margin-top: 60px;
 
     @include tablets {
@@ -68,6 +79,10 @@
       flex: 0 0 336px;
       margin: 3px 0 0;
       text-align: left;
+    }
+
+    @include desktopHd {
+      flex-basis: 375px;
     }
   }
 }

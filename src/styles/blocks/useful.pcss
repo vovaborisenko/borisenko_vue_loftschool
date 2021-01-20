@@ -33,11 +33,21 @@
       background-image: url(~images/content/bg-top-skills-desktop.png);
       background-position: -85px bottom;
     }
+
+    @include desktopHd {
+      bottom: -89px;
+      background-position-x: left;
+      background-size: 662px;
+    }
   }
 
   &__container {
     position: relative;
-    max-width: 1248px;
+    max-width: 1391px;
+
+    @include desktopHd {
+      padding-left: 210px;
+    }
   }
 
   &__title {
@@ -56,6 +66,10 @@
       width: 100%;
       max-width: 650px;
       padding-left: 60px;
+    }
+
+    @include desktopHd {
+      padding-left: 13px;
     }
   }
 
@@ -77,6 +91,11 @@
       padding-left: 61px;
       line-height: 30px;
     }
+
+    @include desktopHd {
+      margin: 53px auto 78px;
+      padding-left: 13px;
+    }
   }
 
   &__box {
@@ -92,6 +111,10 @@
       margin-top: 51px;
       margin-left: auto;
       text-align: left;
+    }
+
+    @include desktopHd {
+      margin-top: 48px;
     }
   }
 }

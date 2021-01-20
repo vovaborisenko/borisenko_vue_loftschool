@@ -14,12 +14,21 @@
       padding-top: 140px;
       padding-bottom: 140px;
     }
+
+    @include desktopHd {
+      padding-top: 160px;
+      padding-bottom: 160px;
+    }
   }
 
   &__content {
     @include desktop {
       display: flex;
       justify-content: center;
+    }
+
+    @include desktopHd {
+      margin-right: 226px;
     }
   }
 
@@ -59,6 +68,10 @@
       line-height: 60px;
       text-align: left;
     }
+
+    @include desktopHd {
+      margin: 0 0 0 56px;
+    }
   }
 
   &__footer {
@@ -73,6 +86,10 @@
     @include desktop {
       display: inline-flex;
       align-items: baseline;
+    }
+
+    @include desktopHd {
+      bottom: 123px;
     }
 
     &:hover {
