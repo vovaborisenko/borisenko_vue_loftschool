@@ -2,24 +2,33 @@
   &__title {
     font-size: 18px;
     font-weight: 700;
-    text-align: center;
+
+    @include desktop {
+      font-size: 24px;
+      line-height: 33px;
+    }
   }
 
   &__list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 30Px -14Px -4Px;
+    margin: 30px -14px -4px;
 
     @include tablets {
       margin-top: 20px;
+    }
+
+    @include desktop {
+      justify-content: space-between;
+      margin-top: 30px;
     }
   }
 
   &__item {
     width: 123px;
     height: 123px;
-    margin: 4Px 10Px;
+    margin: 4px 10px;
 
     @include tablets {
       width: 142px;

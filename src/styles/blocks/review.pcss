@@ -9,6 +9,10 @@
     padding-left: 40px;
   }
 
+  @include desktop {
+    padding-left: 97px;
+  }
+
   &__decor {
     position: absolute;
     top: 11px;
@@ -20,6 +24,12 @@
     @include tablets {
       display: block;
     }
+
+    @include desktop {
+      top: 19px;
+      left: 0;
+      width: 77px;
+    }
   }
 
   &__content {
@@ -28,6 +38,10 @@
 
     @include tablets {
       margin-bottom: auto;
+    }
+
+    @include desktop {
+      line-height: 30px;
     }
   }
 

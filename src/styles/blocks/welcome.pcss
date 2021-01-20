@@ -3,21 +3,41 @@
   height: 100%;
 
   &__container {
+    position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     height: 100%;
+
+    @include desktop {
+      padding-top: 140px;
+      padding-bottom: 140px;
+    }
+  }
+
+  &__content {
+    @include desktop {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__title {
     font-size: 14px;
     line-height: 19px;
+    font-weight: 600;
     text-align: center;
     color: rgba($color-text, 0.5);
 
     @include tablets {
       font-size: 16px;
       line-height: 30px;
+    }
+
+    @include desktop {
+      font-size: 18px;
+      text-align: right;
     }
   }
 
@@ -31,6 +51,37 @@
     @include tablets {
       margin-top: 25px;
       font-size: 48px;
+    }
+
+    @include desktop {
+      margin: 0 0 0 40px;
+      font-size: 72px;
+      line-height: 60px;
+      text-align: left;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 102px;
+    display: none;
+    font-size: 18px;
+    line-height: 30px;
+    color: $color-text;
+    transition: 0.2s;
+
+    @include desktop {
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    .icon {
+      margin-left: 16px;
+      font-size: 14px;
     }
   }
 }

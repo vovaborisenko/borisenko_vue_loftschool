@@ -7,6 +7,11 @@
     background-image: url(~images/content/bg-reviews-tablet.jpg);
   }
 
+  @include desktop {
+    padding: 143px 0 193px;
+    background-image: url(~images/content/bg-reviews-desktop.jpg);
+  }
+
   &__header {
     @include tablets {
       display: flex;
@@ -26,6 +31,12 @@
       margin-bottom: 0;
       font-size: 30px;
       line-height: 41px;
+    }
+
+    @include desktop {
+      margin-right: 115px;
+      font-size: 36px;
+      line-height: 49px;
     }
   }
 
@@ -51,12 +62,22 @@
       margin-top: 48px;
       margin-left: -23px;
     }
+
+    @include desktop {
+      width: 93%;
+      margin-top: 76px;
+      margin-left: -61px;
+    }
   }
 
   &__item {
     @include tablets {
       flex: 1 1 50%;
       margin-left: 23px;
+    }
+
+    @include desktop {
+      margin-left: 61px;
     }
 
     &:nth-child(2) {

@@ -9,8 +9,11 @@
 
   &__icon {
     flex: none;
-    width: 1.61em;
-    height: 1.61em;
+    font-size: 1.61em;
+
+    @include desktop {
+      font-size: 1.31em;
+    }
   }
 
   &__icon + &__text {

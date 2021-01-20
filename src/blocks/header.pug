@@ -2,6 +2,13 @@
   .container.header__container
     .header__logo
       +logo
+    .header__menu
+      nav.second-menu
+        ul.second-menu__list
+          - var secondMenu = ['Обо мне', 'Навыки', 'Работы', 'Отзывы']
+          each item in secondMenu
+            li.second-menu__item
+              a.second-menu__link(href="#")= item
     .header__socials
       ul.socials
         - var socials = ['insta', 'github', 'vk', 'envelope']

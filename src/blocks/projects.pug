@@ -1,35 +1,36 @@
 section.projects
-  .container
+  .container.projects__container
     h2.projects__title Мои работы
-    .projects__slider
-      .slider
-        .slider__list
-          .slider__item(data-index="2")
-            +image('content/slide-1.jpg').slider__img
-        .slider__previews
-          - var n = 0;
-          while n < 4
-            if n == 0
-              .slider__preview.slider__preview--active
-                +image(`content/preview-${++n}.jpg`)
-            else
-              .slider__preview
-                +image(`content/preview-${++n}.jpg`)
-        .slider__actions
-          button.btn.btn--rect(type="button")
-            +icon('arrow-left').btn__arrow.btn__arrow--next
-          button.btn.btn--rect(type="button" disabled)
-            +icon('arrow-left').btn__arrow.btn__arrow--prev
-    .projects__desc
-      .project
-        ul.project__tags
-          - var tags = ['HTML', 'CSS', 'Javascript']
-          each tag in tags
-            li.project__tag= tag
-        .project__title Сайт школы образования
-        .project__content
-          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-        .project__footer
-          a.link(href="#")
-            +icon('link').link__icon
-            span.link__text Посмотреть сайт
+    .projects__content
+      .projects__slider
+        .slider
+          .slider__list
+            .slider__item(data-index="2")
+              +image('content/slide-1.jpg').slider__img
+          .slider__previews
+            - var n = 0;
+            while n < 4
+              if n == 0
+                .slider__preview.slider__preview--active
+                  +image(`content/preview-${++n}.jpg`)
+              else
+                .slider__preview
+                  +image(`content/preview-${++n}.jpg`)
+          .slider__actions
+            button.btn.btn--rect(type="button")
+              +icon('arrow-left').btn__arrow.btn__arrow--next
+            button.btn.btn--rect(type="button" disabled)
+              +icon('arrow-left').btn__arrow.btn__arrow--prev
+      .projects__desc
+        .project
+          ul.project__tags
+            - var tags = ['HTML', 'CSS', 'Javascript']
+            each tag in tags
+              li.project__tag= tag
+          .project__title Сайт школы образования
+          .project__content
+            p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+          .project__footer
+            a.link(href="#")
+              +icon('link').icon.link__icon
+              span.link__text Посмотреть сайт

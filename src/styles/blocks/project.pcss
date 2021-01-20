@@ -36,13 +36,20 @@
       font-size: 30px;
       line-height: 40px;
     }
+
+    @include desktop {
+      margin: 36px 0 36px;
+    }
   }
 
   &__content {
-    font-size: 14px;
     line-height: 24px;
     font-weight: 600;
     opacity: 0.8;
+
+    @include desktop {
+      line-height: 30px;
+    }
   }
 
   &__footer {
@@ -51,6 +58,11 @@
 
     @include tablets {
       margin-top: 28px;
+    }
+
+    @include desktop {
+      margin-top: 46px;
+      font-size: 18px;
     }
   }
 }

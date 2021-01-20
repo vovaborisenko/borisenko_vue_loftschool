@@ -11,6 +11,11 @@
     @include tablets {
       padding-bottom: 148px;
     }
+
+    @include desktop {
+      padding-bottom: 0;
+      background-image: url(~images/content/bg-hero-desktop.jpg);
+    }
   }
 
   &__header {
@@ -18,11 +23,25 @@
     top: 50px;
     left: 0;
     right: 0;
+
+    @include desktop {
+      top: 54px;
+    }
   }
 
   &__welcome {
     height: 100vh;
     min-height: 568px;
+  }
+
+  &__about {
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 50px 0;
+    }
   }
 
   &__footer {

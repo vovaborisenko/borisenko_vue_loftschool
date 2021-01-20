@@ -1,5 +1,7 @@
 .about {
   &__container {
+    max-width: 1200px;
+
     @include tablets {
       display: flex;
     }
@@ -9,6 +11,11 @@
     @include tablets {
       flex: 0 0 256px;
       margin: 4px 62px 0 0;
+    }
+
+    @include desktop {
+      flex-basis: 350px;
+      margin: 0 109px 0 0;
     }
   }
 
@@ -20,6 +27,11 @@
 
     @include tablets {
       margin: 0;
+    }
+
+    @include desktop {
+      margin-top: 4px;
+      line-height: 30px;
     }
   }
 
@@ -33,6 +45,12 @@
     @include tablets {
       margin-top: 10px;
     }
+
+    @include desktop {
+      margin-top: 15px;
+      font-size: 36px;
+      line-height: 49px;
+    }
   }
 
   &__desc {
@@ -40,6 +58,10 @@
 
     @include tablets {
       margin-top: 36px;
+    }
+
+    @include desktop {
+      margin-top: 16px;
     }
   }
 
@@ -51,6 +73,10 @@
 
     @include tablets {
       margin-top: 35px;
+    }
+
+    @include desktop {
+      margin-top: 93px;
     }
 
     &::before {
@@ -66,6 +92,10 @@
         top: 6px;
         left: -46px;
         font-size: 48px;
+      }
+
+      @include desktop {
+        left: -60px;
       }
     }
   }

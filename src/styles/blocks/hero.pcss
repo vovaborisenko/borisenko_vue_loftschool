@@ -10,6 +10,10 @@
       height: 200px;
       margin: 0;
     }
+
+    @include desktop {
+      margin: 0 auto;
+    }
   }
 
   &__data {
@@ -21,14 +25,26 @@
     @include tablets {
       margin-top: 12px;
     }
+
+    @include desktop {
+      margin-top: 58px;
+    }
   }
 
   &__td {
     padding-top: 11px;
 
+    @include desktop {
+      padding-top: 19px;
+    }
+
     &:first-child {
       @include tablets {
         width: 43%;
+      }
+
+      @include desktop {
+        width: 49%;
       }
     }
 

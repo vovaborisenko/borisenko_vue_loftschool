@@ -1,16 +1,43 @@
 .useful {
+  position: relative;
   padding: 81px 0 260px;
-  background: no-repeat url(~images/content/bg-top-skills-tablet.png) center bottom / 100%,
-    $color-background url(~images/content/bg-skills-mobile.jpg) center / cover;
-
-  @include phones {
-    background: no-repeat url(~images/content/bg-top-skills-tablet.png) center bottom / 486px,
-      $color-background url(~images/content/bg-skills-mobile.jpg) center / cover;
-  }
+  background: $color-background url(~images/content/bg-skills-mobile.jpg) center / cover;
 
   @include tablets {
     padding: 90px 0 336px;
     text-align: center;
+    background-image: url(~images/content/bg-skills-tablet.jpg);
+  }
+
+  @include desktop {
+    padding: 144px 0 145px;
+    text-align: left;
+    background-image: url(~images/content/bg-skills-desktop.jpg);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: no-repeat url(~images/content/bg-top-skills-tablet.png) center bottom / 100%;
+
+    @include phones {
+      background-size: 486px;
+    }
+
+    @include desktop {
+      bottom: -80px;
+      background-image: url(~images/content/bg-top-skills-desktop.png);
+      background-position: -85px bottom;
+    }
+  }
+
+  &__container {
+    position: relative;
+    max-width: 1248px;
   }
 
   &__title {
@@ -24,11 +51,16 @@
       font-size: 30px;
       line-height: 41px;
     }
+
+    @include desktop {
+      width: 100%;
+      max-width: 650px;
+      padding-left: 60px;
+    }
   }
 
   &__content {
     margin: 28px 0 71px;
-    font-size: 14px;
     line-height: 24px;
     font-weight: 600;
     opacity: 0.8;
@@ -37,13 +69,29 @@
       width: 70%;
       margin: 28px auto 52px;
     }
+
+    @include desktop {
+      width: 100%;
+      max-width: 650px;
+      margin: 38px auto 94px;
+      padding-left: 61px;
+      line-height: 30px;
+    }
   }
 
   &__box {
     margin-top: 62px;
+    text-align: center;
 
     @include tablets {
       margin-top: 38px;
+    }
+
+    @include desktop {
+      width: 66.67%;
+      margin-top: 51px;
+      margin-left: auto;
+      text-align: left;
     }
   }
 }

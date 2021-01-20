@@ -12,15 +12,17 @@
             each item in secondMenu
               li.second-menu__item
                 a.second-menu__link(href="#")= item
-      .footer__desc Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-      .footer__socials
-        ul.socials
-          - var socials = ['insta', 'vk', 'github', 'envelope']
-          each social in socials
-            li.socials__item
-              a.socials__link.socials__link--rounded.socials__link--opacity_03(href="#")
-                +icon(`${social}`, 'socials__icon')
-      .footer__aphorism
-        .aphorism
-          p.aphorism__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-          .aphorism__author Martin Golding
+      .footer__inner
+        .footer__box
+          .footer__desc Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+          .footer__socials
+            ul.socials
+              - var socials = ['insta', 'vk', 'github', 'envelope']
+              each social in socials
+                li.socials__item
+                  a.socials__link.socials__link--rounded.socials__link--opacity_03(href="#")
+                    +icon(`${social}`, 'socials__icon')
+        .footer__aphorism
+          .aphorism
+            p.aphorism__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+            .aphorism__author Martin Golding
