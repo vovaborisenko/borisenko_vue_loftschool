@@ -1,8 +1,14 @@
 # Учебный шаблон проекта Portfolio
 
+Deploy: https://vovaborisenko.github.io/borisenko_vue_loftschool/
+
 Дизайн макет: [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1)
 
 Исполнитель: [Владимир Борисенко](https://github.com/vovaborisenko)
+
+## Неделя №2
+- Выполена верстка дизайн макета [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1) для всех устройств.
+- Добавлены CI & CD. [Ссылка на проект](https://vovaborisenko.github.io/borisenko_vue_loftschool/)
 
 ## Неделя №1
 - Выполена верстка дизайн макета [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1) для мобил (MobileFirst).
