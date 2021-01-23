@@ -1,12 +1,13 @@
 .review {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 
   @include tablets {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-left: 40px;
+    padding-left: 44px;
   }
 
   @include desktop {
@@ -16,7 +17,7 @@
   &__decor {
     position: absolute;
     top: 11px;
-    left: -4px;
+    left: 0;
     display: none;
     width: 37px;
     color: #303133;
@@ -27,18 +28,14 @@
 
     @include desktop {
       top: 19px;
-      left: 0;
       width: 77px;
     }
   }
 
   &__content {
+    margin-bottom: auto;
     line-height: 1.72;
     opacity: 0.8;
-
-    @include tablets {
-      margin-bottom: auto;
-    }
 
     @include desktop {
       line-height: 30px;

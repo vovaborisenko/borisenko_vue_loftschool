@@ -9,6 +9,7 @@ Deploy: https://vovaborisenko.github.io/borisenko_vue_loftschool/
 ## Неделя №2
 - Выполена верстка дизайн макета [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1) для всех устройств.
 - Добавлены CI & CD. [Ссылка на проект](https://vovaborisenko.github.io/borisenko_vue_loftschool/)
+- Добавлен Vue для скилов и отзывов.
 
 ## Неделя №1
 - Выполена верстка дизайн макета [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1) для мобил (MobileFirst).

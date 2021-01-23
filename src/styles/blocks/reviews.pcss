@@ -58,38 +58,21 @@
     }
   }
 
-  &__list {
-    display: flex;
+  &__swiper {
     margin-top: 55px;
 
-    @include tablets {
+    @inclide tablets {
       margin-top: 48px;
-      margin-left: -23px;
     }
 
     @include desktop {
       width: 1010px;
       margin-top: 76px;
-      margin-left: -61px;
+      margin-left: 0 !important;
     }
   }
 
-  &__item {
-    @include tablets {
-      flex: 1 1 50%;
-      margin-left: 23px;
-    }
-
-    @include desktop {
-      margin-left: 61px;
-    }
-
-    &:nth-child(2) {
-      display: none;
-
-      @include tablets {
-        display: block;
-      }
-    }
+  &__slide {
+    height: auto !important;
   }
 }

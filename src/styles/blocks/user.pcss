@@ -1,7 +1,9 @@
 .user {
   display: flex;
+  align-items: center;
 
   &__photo {
+    align-self: flex-start;
     width: 75px;
     height: 75px;
     margin-right: 10px;
@@ -19,17 +21,11 @@
   }
 
   &__title {
-    margin-top: 16px;
     font-size: 16px;
     line-height: 22px;
     font-weight: 700;
 
-    @include tablets {
-      margin-top: 12px;
-    }
-
     @include desktop {
-      margin-top: 10px;
       font-size: 18px;
       line-height: 25px;
     }

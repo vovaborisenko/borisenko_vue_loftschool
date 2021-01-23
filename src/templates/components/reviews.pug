@@ -1,0 +1,52 @@
+script(type="text/x-template")#reviews-widget
+  section.reviews
+    .container
+      .reviews__header
+        h2.reviews__title Что обо мне говорят
+        .reviews__actions
+          button.btn.btn--rounded(
+            type="button"
+            :disabled="isDisabledPrevButton"
+            @click="prevSlide"
+          )
+            +icon('arrow-left').btn__arrow.btn__arrow--prev
+          button.btn.btn--rounded(
+            type="button"
+            :disabled="isDisabledNextButton"
+            @click="nextSlide"
+          )
+            +icon('arrow-left').btn__arrow.btn__arrow--next
+      swiper.reviews__swiper(
+        :options="swiperOptions"
+        ref="swiper"
+      )
+        swiper-slide.reviews__slide(
+          v-for="review in reviews"
+          :key="review.id"
+        )
+          reviews-item(
+            :content="review.content"
+            :author="review.author"
+          )
+
+script(type="text/x-template")#reviews-item
+  .review
+    +icon('quote').review__decor
+    .review__content
+      p {{ content }}
+    .review__author
+      reviews-item-author(
+        :name="author.name"
+        :desc="author.desc"
+        :avatar="author.avatarPath"
+      )
+
+script(type="text/x-template")#reviews-item-author
+  .user
+    img.user__photo(
+      :src="avatar"
+      :alt="name"
+    )
+    .user__info
+      .user__title {{ name }}
+      .user__subtitle {{ desc }}
