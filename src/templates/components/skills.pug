@@ -1,0 +1,36 @@
+script(type="text/x-template")#skills-widget
+  section.useful
+    .container.useful__container
+      h2.useful__title Чем я могу быть полезен вам
+      p.useful__content Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+      .useful__box(v-for="skillsGroup in skillsGroups" :key="skillsGroup.id")
+        skills-list(
+          :title="skillsGroup.title"
+          :skills="skillsGroup.skills"
+        )
+
+
+script(type="text/x-template")#skills-category
+  .skills
+    h3.skills__title {{ title }}
+    ul.skills__list
+      li.skills__item(v-for="skill in skills" :key="skill.id")
+        skills-list-item(
+          :title="skill.title"
+          :percent="skill.percent"
+        )
+
+script(type="text/x-template")#skill-item
+  .skill
+    .skill__title(v-html="title")
+    svg.skill__svg(viewBox="0 0 128 128")
+      circle.skill__track(cx="64" cy="64" r="59" stroke="currentColor" stroke-width="3" fill="none")
+      circle.skill__diagram(
+        ref="colored-circle"
+        style={
+          strokeDashoffset: strokeDashoffset,
+        }
+        cx="64" cy="64" r="59" stroke="url(#diagram)" stroke-width="10" fill="none" transform="rotate(180, 64, 64)")
+      linearGradient#diagram(x1="0" y1="0" x2="128" y2="0" gradientUnits="userSpaceOnUse")
+        stop(stop-color="#D0731B")
+        stop(offset="1" stop-color="#DC9322")
