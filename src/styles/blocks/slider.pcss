@@ -68,6 +68,7 @@
 
   &__preview {
     position: relative;
+    padding: 0;
 
     &::before {
       content: '';
@@ -91,6 +92,10 @@
       &::before {
         border-color: $color-accent-dark;
       }
+    }
+
+    &:focus {
+      z-index: 1;
     }
   }
 }

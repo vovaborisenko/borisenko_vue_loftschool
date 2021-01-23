@@ -11,10 +11,10 @@ section.projects
             - var n = 0;
             while n < 4
               if n == 0
-                .slider__preview.slider__preview--active
+                button.slider__preview.slider__preview--active
                   +image(`content/preview-${++n}.jpg`)
               else
-                .slider__preview
+                button.slider__preview
                   +image(`content/preview-${++n}.jpg`)
           .slider__actions
             button.btn.btn--rect(type="button")
