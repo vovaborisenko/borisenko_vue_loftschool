@@ -17,9 +17,9 @@ section.projects
                 button.slider__preview
                   +image(`content/preview-${++n}.jpg`)
           .slider__actions
-            button.btn.btn--rect(type="button")
+            button.slider__button.btn.btn--rect(type="button")
               +icon('arrow-left').btn__arrow.btn__arrow--next
-            button.btn.btn--rect(type="button" disabled)
+            button.slider__button.btn.btn--rect(type="button" disabled)
               +icon('arrow-left').btn__arrow.btn__arrow--prev
       .projects__desc
         .project
