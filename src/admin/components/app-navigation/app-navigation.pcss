@@ -1,0 +1,43 @@
+.app-navigation {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 27px;
+    font: inherit;
+    color: inherit;
+    text-align: center;
+    transition: 0.2s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s;
+    }
+
+    &--active {
+      font-weight: 600;
+      color: $color-accent-admin;
+
+      &::after {
+        border-color: inherit;
+      }
+    }
+
+    &:hover {
+      background-color: rgba($color-background-headline, 0.05);
+    }
+  }
+}
