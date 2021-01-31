@@ -3,8 +3,13 @@
 Deploy: https://vovaborisenko.github.io/borisenko_vue_loftschool/
 
 Дизайн макет: [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1)
+[Админка](https://www.figma.com/file/dL2zmKuChdJPddkFKmLJ0E/Admin?node-id=1%3A593)
 
 Исполнитель: [Владимир Борисенко](https://github.com/vovaborisenko)
+
+## Неделя №3
+- Добавлен Vue для слайдера проектов.
+- Созданы компонеты для страницы [админки](https://www.figma.com/file/dL2zmKuChdJPddkFKmLJ0E/Admin?node-id=1%3A593) "Обо мне".
 
 ## Неделя №2
 - Выполена верстка дизайн макета [Autumn](https://www.figma.com/file/k0z3kxC6O9gwzDjQVeox0o/Autumn?node-id=0%3A1) для всех устройств.
