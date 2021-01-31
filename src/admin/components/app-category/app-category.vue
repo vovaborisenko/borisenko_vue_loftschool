@@ -28,11 +28,9 @@
 </template>
 
 <script>
-import Card from "components/Card";
+import Card from "components/card";
 import EditLine from "components/editLine";
 import AppInput from "components/input";
-import AppButton from "components/button";
-import Icon from "components/icon/icon";
 import AppSkillAdd from "components/app-skill-add/app-skill-add";
 import AppSkill from "components/app-skill/app-skill";
 
@@ -41,8 +39,6 @@ export default {
   components: {
     AppSkill,
     AppSkillAdd,
-    Icon,
-    AppButton,
     AppInput,
     EditLine,
     Card
