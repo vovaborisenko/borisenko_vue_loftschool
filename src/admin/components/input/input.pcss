@@ -61,7 +61,7 @@
 
   &__inner-after {
     position: absolute;
-    bottom: 10px;
+    bottom: 13px;
     right: 10px;
   }
 }
@@ -97,10 +97,14 @@
 }
 
 .input__elem {
+  position: relative;
   width: 100%;
   padding: 10px 8%;
+  line-height: normal;
   border: none;
   border-bottom: 1px solid #1f232d;
+  background: transparent;
+  z-index: 1;
 
   &::placeholder {
     color: rgba(55, 62, 66, 0.25);
