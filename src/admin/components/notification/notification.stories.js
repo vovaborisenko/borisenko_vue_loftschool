@@ -14,7 +14,7 @@ export const defaultView = () => ({
   components: { notification },
   template: `
     <notification
-      text="Текст внутри" 
+      text="Текст внутри"
       @click="onClick"
     >
     </notification>
@@ -30,7 +30,7 @@ export const warningView = () => ({
   components: { notification },
   template: `
     <notification
-      text="Текст внутри" 
+      text="Текст внутри"
       type="warning"
       @click="onClick"
     >
@@ -47,7 +47,7 @@ export const errorView = () => ({
   components: { notification },
   template: `
     <notification
-      text="Текст внутри" 
+      text="Текст внутри"
       type="error"
       @click="onClick"
     >
