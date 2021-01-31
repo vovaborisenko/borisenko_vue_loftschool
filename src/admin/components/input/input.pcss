@@ -8,8 +8,9 @@
 }
 
 .input {
-  display: block;
   position: relative;
+  display: block;
+  width: 100%;
 
   &.no-side-paddings {
     .input__elem {
@@ -52,16 +53,22 @@
     @each $icon in (user, key) {
       &.input_icon-$(icon) {
         .input__elem {
-          background-image: svg-load("$(icon).svg", fill=$errors-color);
+          background-image: svg-load("$(icon).svg", fill=$color-error);
         }
       }
     }
+  }
+
+  &__inner-after {
+    position: absolute;
+    bottom: 13px;
+    right: 10px;
   }
 }
 
 .error {
   .field__elem {
-    border-color: $errors-color;
+    border-color: $color-error;
   }
 
   .input__error-tooltip {
@@ -82,7 +89,7 @@
 .textarea__elem {
   height: 150px;
   padding: 20px;
-  border: 1px solid rgba($text-color, 0.2);
+  border: 1px solid rgba($color-text-admin, 0.2);
   resize: none;
   font-weight: 600;
   margin-top: 10px;
@@ -90,12 +97,21 @@
 }
 
 .input__elem {
+  position: relative;
   width: 100%;
   padding: 10px 8%;
+  line-height: normal;
   border: none;
   border-bottom: 1px solid #1f232d;
+  background: transparent;
+  z-index: 1;
 
   &::placeholder {
     color: rgba(55, 62, 66, 0.25);
+  }
+
+  &:disabled {
+    background: transparent;
+    border-color: transparent;
   }
 }

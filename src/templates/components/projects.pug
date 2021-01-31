@@ -1,0 +1,59 @@
+script(type="text/x-template")#projects-widget
+  section.projects(v-show="projects.length")
+    .container.projects__container
+      h2.projects__title Мои работы
+      .projects__content
+        .projects__slider
+          projects-slider(
+            :previews="previews"
+            :activeSlide="activeSlide"
+            :activeNumber="activeNumber"
+            @next-slide="nextSlide"
+            @prev-slide="prevSlide"
+            @choose-slide="chooseSlide"
+          )
+        .projects__desc
+          project-desc(
+            :title="currentProject.title"
+            :description="currentProject.content"
+            :link="currentProject.link"
+            :tags="currentProject.tags"
+          )
+
+script(type="text/x-template")#project-desc
+  .project
+    ul.project__tags
+      li.project__tag(v-for="tag in tags") {{ tag }}
+    .project__title {{ title }}
+    .project__content
+      p {{ description }}
+    .project__footer
+      a.link(:href="link")
+        +icon('link').icon.link__icon
+        span.link__text Посмотреть сайт
+
+script(type="text/x-template")#projects-slider
+  .slider
+    .slider__list
+      .slider__item(:data-index="activeNumber")
+        img.slider__img(:src="activeSlide.imagePath")
+    .slider__previews
+      button.slider__preview(
+        v-for="(preview, key) in previews"
+        :class="{ 'slider__preview--active': preview.id === activeSlide.id }"
+        @click="$emit('choose-slide', preview.id)"
+      )
+        img(:src="preview.previewPath")
+    .slider__actions
+      button.slider__button.btn.btn--rect(
+        type="button"
+        :disabled="activeSlide.isLast"
+        @click="$emit('next-slide')"
+      )
+        +icon('arrow-left').btn__arrow.btn__arrow--next
+      button.slider__button.btn.btn--rect(
+        type="button"
+        :disabled="activeSlide.isFirst"
+        @click="$emit('prev-slide')"
+      )
+        +icon('arrow-left').btn__arrow.btn__arrow--prev

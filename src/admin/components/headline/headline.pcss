@@ -1,0 +1,35 @@
+.headline-component {
+  color: $color-text;
+  background-color: $color-background-headline;
+
+  &__continer.container {
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  &__slot {
+    margin-right: 25px;
+  }
+
+  &__title {
+    margin-top: 4px;
+    margin-right: 20px;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  &__actions {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__action {
+    padding: 0;
+    font-size: 16px;
+    color: inherit;
+    text-decoration: underline;
+  }
+}

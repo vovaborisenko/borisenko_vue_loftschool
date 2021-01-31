@@ -10,8 +10,8 @@
       <div class="input">
         <app-input
           placeholder="Название новой группы"
-          :value="value"
-          :errorText="errorText"
+          v-model="title"
+          :errorMessage="errorText"
           @input="$emit('input', $event)"
           @keydown.native.enter="onApprove"
           autofocus="autofocus"
@@ -41,17 +41,21 @@ export default {
       type: String,
       default: ""
     },
-    blocked: Boolean
+    blocked: Boolean,
+    editModeByDefault: Boolean,
   },
   data() {
     return {
-      editmode: false,
-      title: this.value
+      editmode: this.editModeByDefault,
+      title: this.value,
     };
   },
   methods: {
     onApprove() {
-      if (this.title.trim() === this.value.trim()) {
+      if (
+        !this.errorText
+        && this.title.trim()
+      ) {
         this.editmode = false;
       } else {
         this.$emit("approve", this.value);
