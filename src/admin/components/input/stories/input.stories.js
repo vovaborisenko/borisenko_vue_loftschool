@@ -46,6 +46,19 @@ labeledView.story = {
   name: "С заголовком",
 };
 
+export const innerAfterView = () => ({
+  components: { appInput },
+  template: `
+    <app-input
+      inner-after="%"
+    />
+  `,
+});
+
+innerAfterView.story = {
+  name: "С текстом в конце инпута",
+};
+
 export const errorView = () => ({
   components: { appInput },
   template: `
@@ -67,7 +80,7 @@ export const typeView = () => ({
       type="number"
       min="0"
       max="100"
-      maxlength="3" 
+      maxlength="3"
     />
   `,
 });

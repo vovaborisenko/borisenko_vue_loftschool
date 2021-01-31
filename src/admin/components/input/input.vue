@@ -14,6 +14,10 @@
     <div class="input__error-tooltip">
       <tooltip :text="errorMessage"></tooltip>
     </div>
+    <span
+      v-if="innerAfter"
+      class="input__inner-after"
+    >{{ innerAfter }}</span>
   </label>
   <label
     class="textarea"
@@ -56,7 +60,11 @@ export default {
       type: String,
       default: "",
       validator: value => ["", "user", "key"].includes(value)
-    }
+    },
+    innerAfter: {
+      type: String,
+      default: "",
+    },
   },
   computed: {
     iconClass() {
