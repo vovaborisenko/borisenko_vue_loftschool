@@ -3,12 +3,14 @@
     .skill-add__title
       app-input(
         v-model="title"
+        :errorMessage="errorTitle"
         placeholder="Новый навык"
       )
     .skill-add__percent
       app-input(
         v-model="percent"
         inner-after="%"
+        :errorMessage="errorPercent"
         type="number"
         min="0"
         max="100"
@@ -17,8 +19,7 @@
       app-button(
         type="round"
         title="+"
-        @click="$emit('add-skill', {title, percent})"
-        :disabled="!title || !percent"
+        @click="addSkill"
       )
 </template>
 
@@ -33,6 +34,27 @@ export default {
     return {
       title: '',
       percent: '100',
+      validmode: false,
+    }
+  },
+  computed: {
+    errorTitle() {
+      return !this.validmode || this.title.trim() ? '' : 'Введите имя навыка';
+    },
+    errorPercent() {
+      return !this.validmode || this.percent.trim() ? '' : 'Не может быть пустым';
+    },
+  },
+  methods: {
+    addSkill() {
+      if (this.title.trim() && this.percent.trim()) {
+        this.$emit('add-skill', {
+          title: this.title,
+          percent: this.percent
+        });
+      } else {
+        this.validmode = true;
+      }
     }
   },
 }
