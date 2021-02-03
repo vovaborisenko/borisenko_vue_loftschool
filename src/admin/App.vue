@@ -9,31 +9,7 @@
     .admin-page__navigation
       app-navigation
     main.admin-page__content
-      section.content
-        .container
-          .content__header
-            h1.content__title Блок «Обо мне»
-            iconed-btn(
-              type="iconed"
-              title="Добавить группу"
-              @click="newCategory = true"
-            )
-          .content__main
-            ul.categories
-              li.categories__item(
-                v-if="newCategory"
-              )
-                app-category(
-                  empty
-                )
-              li.categories__item(
-                v-for="category in skillsList"
-                :key="category.id"
-              )
-                app-category(
-                  :title="category.title"
-                  :skills="category.skills"
-                )
+      router-view
 </template>
 
 <script>
@@ -88,28 +64,5 @@ html {
     padding: 50px 0 30px;
     background: url("~images/content/bg-admin.jpg") no-repeat fixed center / cover;
   }
-}
-
-.content {
-  &__header {
-    display: flex;
-  }
-
-  &__title {
-    margin-right: 54px;
-    font-size: 21px;
-    line-height: 29px;
-    font-weight: 700;
-  }
-
-  &__main {
-    margin-top: 54px;
-  }
-}
-
-.categories {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 25px;
 }
 </style>
