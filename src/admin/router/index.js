@@ -1,13 +1,19 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import PageAbout from "./pages/page-about.vue";
 
 Vue.use(VueRouter);
+
+const PageAbout = () => import("../pages/page-about.vue");
+const PageLogin = () => import("../pages/page-login.vue");
 
 const routes = [
   {
     path: '/',
     component: PageAbout,
+  },
+  {
+    path: '/login',
+    component: PageLogin,
   },
   {
     path: '*',
@@ -19,6 +25,6 @@ const routes = [
 
 export default new VueRouter({
   base: '/admin/',
-  mode: 'history',
+  // mode: 'history',
   routes,
 });
