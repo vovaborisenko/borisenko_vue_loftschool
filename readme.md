@@ -9,6 +9,11 @@ Deploy: https://vovaborisenko.github.io/borisenko_vue_loftschool/
 
 ## Неделя №4
 - Добавлен VueRouter.
+- Добавлен Vuex.
+- Сделана валидация Simple-vue-validator.
+- Обновлена версия Storybook.
+- Сделана CRUD для навыков.
+- Добавлена аутентификация.
 
 ## Неделя №3
 - Добавлен Vue для слайдера проектов.
