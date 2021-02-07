@@ -1,14 +1,19 @@
 <template lang="pug">
-  card.category
-    edit-line(
+  card.category(
+    :class="{'category--deleting': category.deleting}"
+  )
+    app-category-name(
       slot="title"
-      v-model="currentTitle"
-      :errorText="!currentTitle ? errorTitle : ''"
+      :title="title"
       :edit-mode-by-default="empty"
-      @approve="approveTitle"
+      @delete="$emit('delete', category)"
+      @save="$emit('save', $event)"
+      @cancel="$emit('cancel')"
     )
     template(slot="content")
-      ul.skills(v-show="skills.length")
+      ul.skills.category__skills(
+        v-if="skills.length"
+      )
         li.skills__item(
           v-for="skill in skills"
           :key="skill.id"
@@ -16,27 +21,29 @@
           app-skill(
             :title="skill.title"
             :percent="skill.percent"
-            @apply-skill="$emit('apply-skill', {...$event, id: skill.id})"
-            @delete-skill="$emit('delete-skill', skill.id)"
+            @delete="$emit('delete-skill', { skill: $event, id: skill.id })"
+            @save="$emit('save-skill', { skill: $event, id: skill.id })"
           )
       .category__footer(
-        :class="{'category__footer--disabled': empty}"
+        :class="{ 'category__footer--disabled': empty }"
       )
         app-skill-add(
-          @add-skill="$emit('add-skill', $event)"
+          @add="$emit('add-skill', $event)"
         )
 </template>
 
 <script>
-import Card from "components/card";
-import EditLine from "components/editLine";
-import AppInput from "components/input";
-import AppSkillAdd from "components/app-skill-add/app-skill-add";
-import AppSkill from "components/app-skill/app-skill";
+import Card from 'components/card';
+import EditLine from 'components/editLine';
+import AppInput from 'components/input';
+import AppSkillAdd from 'components/app-skill-add';
+import AppSkill from 'components/app-skill/app-skill';
+import AppCategoryName from 'components/app-category-name';
 
 export default {
   name: 'app-category',
   components: {
+    AppCategoryName,
     AppSkill,
     AppSkillAdd,
     AppInput,
@@ -44,30 +51,35 @@ export default {
     Card
   },
   props: {
+    /**
+     * Название категории
+     */
     title: {
       type: String,
       default: '',
     },
+    /**
+     * Список навыков
+     */
     skills: {
       type: Array,
       default: () => [],
     },
-    empty: Boolean,
+    /**
+     * Пустая, еще не созданная категория
+     */
+    empty: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      currentTitle: this.title,
-      errorTitle: '',
+      category: {
+        title: this.title,
+        deleting: false,
+      },
     };
-  },
-  methods: {
-    approveTitle(title) {
-      if (!title) {
-        this.errorTitle = 'Введите имя категории';
-      } else {
-        this.currentTitle = title;
-      }
-    }
   },
 }
 </script>
