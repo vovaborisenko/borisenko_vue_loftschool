@@ -26,6 +26,12 @@ module.exports = (env, argv) => {
     loader: "vue-loader",
   };
 
+  const vueDocs = {
+    test: /\.vue$/,
+      use: 'vue-docgen-loader',
+      enforce: 'post'
+  }
+
   const js = {
     test: /\.js$/,
     loader: "babel-loader",
@@ -94,7 +100,7 @@ module.exports = (env, argv) => {
       chunkFilename: "[chunkhash].js",
     },
     module: {
-      rules: [pcss, vue, js, files, svg, pug],
+      rules: [pcss, vue, vueDocs, js, files, svg, pug],
     },
     resolve: {
       alias: {

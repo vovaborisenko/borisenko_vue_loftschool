@@ -1,22 +1,26 @@
 import AppSkillAdd from './app-skill-add.vue';
 import { action } from '@storybook/addon-actions';
-import { text, withKnobs } from '@storybook/addon-knobs';
-
-const methods = {
-  onAddSkill: action('onAddSkill'),
-};
 
 export default {
-  title: 'app-skill-add',
-  components: { AppSkillAdd },
-}
+  title: 'Компоненты навыков/app-skill-add',
+  component: AppSkillAdd,
+  excludeStories: /.*Data$/,
+};
 
-export const defaultView = () => ({
+export const actionsData = {
+  onAdd: action('add'),
+};
+
+const Template = (args, { argTypes }) => ({
   components: { AppSkillAdd },
-  template: `
-  <app-skill-add
-    @add-skill="onAddSkill"
-  />
-  `,
-  methods
+  props: Object.keys(argTypes),
+  methods: actionsData,
+  template: `<app-skill-add
+    v-bind="$props"
+    @add="onAdd"
+  />`,
 });
+
+export const Default = Template.bind({});
+Default.args = {
+};

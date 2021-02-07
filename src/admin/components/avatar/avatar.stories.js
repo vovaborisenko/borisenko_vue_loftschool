@@ -1,24 +1,18 @@
-import avatar from "./avatar.vue";
-import { text, withKnobs } from "@storybook/addon-knobs";
+import Avatar from "./avatar.vue";
 
 export default {
-  title: "avatar",
-  components: { avatar },
-  decorators: [withKnobs]
-};
+  title: 'Компоненты/avatar',
+  components: { Avatar },
+}
 
-export const defaultView = () => ({
-  components: { avatar },
-  props: {
-    size: {
-      default: text("size", "3.1")
-    }
-  },
-  template: `
-    <avatar :size="size" src="https://picsum.photos/300/300" />
-  `,
+const Template = (args, { argTypes }) => ({
+  components: { Avatar },
+  props: Object.keys(argTypes),
+  template: `<avatar v-bind="$props" />`,
 });
 
-defaultView.story = {
-  name: "Стандартный вид"
-}
+export const Default = Template.bind({});
+Default.args = {
+  size: '3.1',
+  src: 'https://picsum.photos/300/300',
+};
