@@ -1,26 +1,32 @@
 import AppSkill from './app-skill.vue';
 import { action } from '@storybook/addon-actions';
-import { text, withKnobs } from '@storybook/addon-knobs';
-
-const methods = {
-  onDelete: action('onDelete'),
-  onApply: action('onApply'),
-};
 
 export default {
-  title: 'app-skill',
-  components: { AppSkill },
-}
+  title: 'Компоненты навыков/app-skill',
+  component: AppSkill,
+  excludeStories: /.*Data$/,
+};
 
-export const defaultView = () => ({
+export const actionsData = {
+  onSave: action('save'),
+  onDelete: action('delete'),
+};
+
+const Template = (args, { argTypes }) => ({
   components: { AppSkill },
-  template: `
-  <app-skill
-    title="Javascript"
-    percent="89"
-    @delete-skill="onDelete"
-    @apply-skill="onApply"
-  />
-  `,
-  methods
+  props: Object.keys(argTypes),
+  methods: actionsData,
+  template: `<app-skill
+    v-bind="$props"
+    @delete="onDelete"
+    @save="onSave"
+  />`,
 });
+
+export const Default = Template.bind({});
+Default.args = {
+  title: 'Skill Name',
+  percent: '87',
+};
+
+

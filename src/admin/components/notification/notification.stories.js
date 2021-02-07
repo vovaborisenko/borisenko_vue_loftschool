@@ -1,61 +1,48 @@
-import notification from "./notification.vue";
-import { action } from "@storybook/addon-actions";
-
-const methods = {
-  onClick: action("onClick")
-}
+import Notification from './notification.vue';
+import { action } from '@storybook/addon-actions';
 
 export default {
-  title: "notification",
-  component: notification,
+  title: 'Компоненты/notification',
+  component: Notification,
+  excludeStories: /.*Data$/,
+  argTypes: {
+    type: {
+      control: {
+        type: 'select',
+        options: ['success', 'warning', 'error'],
+      },
+    },
+  },
 };
 
-export const defaultView = () => ({
-  components: { notification },
-  template: `
-    <notification
-      text="Текст внутри"
-      @click="onClick"
-    >
-    </notification>
-  `,
-  methods
+export const actionsData = {
+  onClick: action('onClick'),
+};
+
+const Template = (args, { argTypes }) => ({
+  components: { Notification },
+  props: Object.keys(argTypes),
+  methods: actionsData,
+  template: `<notification
+    v-bind="$props"
+    @click="onClick"
+  />`,
 });
 
-defaultView.story = {
-  name: "Стандартный вид"
-}
+export const Default = Template.bind({});
+Default.args = {
+  text: 'Notification message',
+  type: 'success',
+};
 
-export const warningView = () => ({
-  components: { notification },
-  template: `
-    <notification
-      text="Текст внутри"
-      type="warning"
-      @click="onClick"
-    >
-    </notification>
-  `,
-  methods
-});
+export const Warning = Template.bind({});
+Warning.args = {
+  ...Default.args,
+  type: 'warning',
+};
 
-warningView.story = {
-  name: "Предупреждение"
-}
-
-export const errorView = () => ({
-  components: { notification },
-  template: `
-    <notification
-      text="Текст внутри"
-      type="error"
-      @click="onClick"
-    >
-    </notification>
-  `,
-  methods
-});
-
-errorView.story = {
-  name: "Ошибка"
-}
+export const Error = Template.bind({});
+Error.args = {
+  ...Default.args,
+  type: 'error',
+};

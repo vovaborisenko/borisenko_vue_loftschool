@@ -7,6 +7,14 @@ Deploy: https://vovaborisenko.github.io/borisenko_vue_loftschool/
 
 Исполнитель: [Владимир Борисенко](https://github.com/vovaborisenko)
 
+## Неделя №4
+- Добавлен VueRouter.
+- Добавлен Vuex.
+- Сделана валидация Simple-vue-validator.
+- Обновлена версия Storybook.
+- Сделана CRUD для навыков.
+- Добавлена аутентификация.
+
 ## Неделя №3
 - Добавлен Vue для слайдера проектов.
 - Созданы компонеты для страницы [админки](https://www.figma.com/file/dL2zmKuChdJPddkFKmLJ0E/Admin?node-id=1%3A593) "Обо мне".

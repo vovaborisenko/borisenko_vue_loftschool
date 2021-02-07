@@ -1,23 +1,21 @@
-import headline from "./headline";
-import { text, withKnobs } from "@storybook/addon-knobs";
+import Headline from "./headline";
 
 export default {
-  title: 'headline',
-  components: { headline },
-  decorators: [withKnobs],
+  title: 'Компоненты/headline',
+  components: { Headline },
 }
 
-export const defaultView = () => ({
-  components: { headline },
-  props: {
-    title: {
-      default: text('title', 'Панель администрирования'),
-    },
-  },
-  template: `
-  <headline
-    :title="title"
+const Template = (args, { argTypes }) => ({
+  components: { Headline },
+  props: Object.keys(argTypes),
+  template: `<headline
+    v-bind="$props"
   >
     <h4>Slot content</h4>
   </headline>`,
 });
+
+export const Default = Template.bind({});
+Default.args = {
+  title: 'Панель администрирования',
+};

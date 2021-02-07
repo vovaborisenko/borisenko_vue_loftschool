@@ -2,15 +2,15 @@
   .skill-add
     .skill-add__title
       app-input(
-        v-model="title"
-        :errorMessage="errorTitle"
+        v-model="skill.title"
+        :errorMessage="validation.firstError('skill.title')"
         placeholder="Новый навык"
       )
     .skill-add__percent
       app-input(
-        v-model="percent"
+        v-model="skill.percent"
         inner-after="%"
-        :errorMessage="errorPercent"
+        :errorMessage="validation.firstError('skill.percent')"
         type="number"
         min="0"
         max="100"
@@ -20,41 +20,48 @@
         type="round"
         title="+"
         @click="addSkill"
+        :disabled="skill.blocked"
       )
 </template>
 
 <script>
-import AppButton from "components/button";
-import AppInput from "components/input";
+import AppButton from 'components/button';
+import AppInput from 'components/input';
+import { Validator } from 'simple-vue-validator';
 
 export default {
   name: 'app-skill-add',
   components: {AppInput, AppButton},
   data() {
     return {
-      title: '',
-      percent: '100',
-      validmode: false,
+      skill: {
+        title: '',
+        percent: '100',
+        blocked: false,
+      }
     }
   },
-  computed: {
-    errorTitle() {
-      return !this.validmode || this.title.trim() ? '' : 'Введите имя навыка';
+  validators: {
+    'skill.title': (value) => {
+      return Validator.value(value).required('Поле не может быть пустым');
     },
-    errorPercent() {
-      return !this.validmode || this.percent.trim() ? '' : 'Не может быть пустым';
+    'skill.percent': (value) => {
+      return Validator.value(value)
+        .required('Поле не может быть пустым')
+        .float('Должно быть числом')
+        .between(0, 100, 'Значение должно быть от 0 до 100');
     },
   },
   methods: {
-    addSkill() {
-      if (this.title.trim() && this.percent.trim()) {
-        this.$emit('add-skill', {
-          title: this.title,
-          percent: this.percent
-        });
-      } else {
-        this.validmode = true;
-      }
+    async addSkill() {
+      if (await this.$validate() === false) return;
+
+      const { skill, validation } = this;
+
+      /**
+       * Отправляет заполненные данные нового навыка
+       */
+      this.$emit('add', { skill, validation });
     }
   },
 }

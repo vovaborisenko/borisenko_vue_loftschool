@@ -6,11 +6,14 @@
 </template>
 
 <script>
+const types = ['success', 'warning', 'error'];
+
 export default {
   props: {
     type: {
       type: String,
-      default: "success"
+      default: "success",
+      validator: value => types.indexOf(value) !== -1,
     },
     text: {
       type: String,

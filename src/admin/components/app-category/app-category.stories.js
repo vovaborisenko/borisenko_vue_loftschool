@@ -1,22 +1,50 @@
 import AppCategory from './app-category.vue';
-import {text, withKnobs} from '@storybook/addon-knobs';
+import * as AppSkillStories from 'components/app-skill/app-skill.stories';
+import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'app-category',
-  components: { AppCategory },
-  decorators: [withKnobs],
-}
+  title: 'Компоненты навыков/app-category',
+  component: AppCategory,
+  excludeStories: /.*Data$/,
+};
 
-export const defaultView = () => ({
+export const actionsData = {
+  onSave: action('save'),
+  onDelete: action('delete'),
+  onAddSkill: action('add-skill'),
+  onDeleteSkill: action('delete-skill'),
+  onSaveSkill: action('save-skill'),
+};
+
+const Template = (args, { argTypes }) => ({
   components: { AppCategory },
+  props: Object.keys(argTypes),
+  methods: actionsData,
   template: `<app-category
-    title="Category Name"
-  />`
+    v-bind="$props"
+    @delete="onDelete"
+    @save="onSave"
+    @add-skill="onAddSkill"
+    @delete-skill="onDeleteSkill"
+    @save-skill="onSaveSkill"
+  />`,
 });
 
-export const emptyView = () => ({
-  components: { AppCategory },
-  template: `<app-category
-    empty
-  />`
-});
+export const Default = Template.bind({});
+Default.args = {
+  title: 'Category Name Default View',
+  empty: false,
+  skills: [
+    { ...AppSkillStories.Default.args, id: 1, title: 'Skill 1', percent: '45' },
+    { ...AppSkillStories.Default.args, id: 2, title: 'Skill 2', percent: '54' },
+    { ...AppSkillStories.Default.args, id: 3, title: 'Skill 3', percent: '97' },
+  ],
+};
+
+export const NewCategory = Template.bind({});
+NewCategory.args = {
+  ...Default.args,
+  title: '',
+  empty: true,
+  skills: [],
+};

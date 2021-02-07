@@ -16,15 +16,11 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.12.15",
     "@babel/preset-env": "^7.3.1",
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-backgrounds": "^5.3.19",
-    "@storybook/addon-knobs": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addon-storysource": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/source-loader": "^5.3.19",
-    "@storybook/vue": "^5.3.19",
+    "@storybook/addon-essentials": "^6.1.17",
+    "@storybook/source-loader": "^6.1.17",
+    "@storybook/vue": "^6.1.17",
     "autoprefixer": "^9.4.8",
     "babel-loader": "^8.0.5",
     "babel-preset-vue": "^2.0.2",
@@ -47,11 +43,13 @@
     "postcss-svgo": "^4.0.2",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.0.0",
-    "storybook-dark-mode": "^0.6.1",
+    "storybook-dark-mode": "*",
     "svg-sprite-loader": "^5.0.0",
     "svg-transform-loader": "^2.0.13",
     "svgo-loader": "^2.2.0",
     "terser-webpack-plugin": "^3.0.6",
+    "vue-docgen-api": "^4.35.0",
+    "vue-docgen-loader": "^1.5.0",
     "vue-loader": "^15.6.4",
     "vue-template-compiler": "^2.6.7",
     "webpack": "^4.29.5",
@@ -62,14 +60,17 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "axios": "^0.21.1",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^3.0.0",
     "request": "^2.88.0",
     "signale": "^1.4.0",
+    "simple-vue-validator": "^0.16.0",
     "swiper": "^6.4.8",
     "vue": "^2.6.7",
     "vue-awesome-swiper": "^4.1.1",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   }
 }

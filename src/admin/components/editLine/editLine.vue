@@ -1,29 +1,60 @@
 <template>
-  <div class="edit-line-component" :class="{'blocked' : blocked}">
-    <div class="title" v-if="editmode === false">
-      <div class="text">{{value}}</div>
-      <div class="icon">
-        <icon symbol="pencil" grayscale @click="editmode = true"></icon>
+  <div
+    class="edit-line-component"
+    :class="{'blocked' : blocked}"
+  >
+    <div
+      v-if="editMode === false"
+      key="view"
+      class="title"
+    >
+      <div class="text">{{ currentTitle }}</div>
+      <div class="buttons">
+        <div class="button-icon">
+          <icon
+            symbol="pencil"
+            grayscale
+            @click="onEdit"
+          />
+        </div>
+        <div class="button-icon">
+          <icon
+            symbol="trash"
+            grayscale
+            @click="$emit('delete')"
+          />
+        </div>
       </div>
     </div>
-    <div v-else class="title">
-      <div class="input">
+    <div
+      v-else
+      key="edit"
+      class="title"
+    >
+      <div class="title-input">
         <app-input
           placeholder="Название новой группы"
-          v-model="title"
+          v-model="currentTitle"
           :errorMessage="errorText"
-          @input="$emit('input', $event)"
+          @input="$emit('change', currentTitle)"
           @keydown.native.enter="onApprove"
-          autofocus="autofocus"
-          no-side-paddings="no-side-paddings"
-        ></app-input>
+          autofocus
+          no-side-paddings
+          ref="input"
+        />
       </div>
       <div class="buttons">
         <div class="button-icon">
-          <icon symbol="tick" @click="onApprove"></icon>
+          <icon
+            symbol="tick"
+            @click="onApprove"
+          />
         </div>
         <div class="button-icon">
-          <icon symbol="cross" @click="$emit('remove')"></icon>
+          <icon
+            symbol="cross"
+            @click="onCancel"
+          />
         </div>
       </div>
     </div>
@@ -33,7 +64,7 @@
 <script>
 export default {
   props: {
-    value: {
+    title: {
       type: String,
       default: ""
     },
@@ -42,25 +73,40 @@ export default {
       default: ""
     },
     blocked: Boolean,
-    editModeByDefault: Boolean,
+    editMode: Boolean,
+  },
+  model: {
+    prop: 'title',
+    event: 'change',
   },
   data() {
     return {
-      editmode: this.editModeByDefault,
-      title: this.value,
+      currentTitle: this.title,
+      initTitle: this.title,
     };
   },
   methods: {
+    onEdit() {
+      this.$emit('edit');
+    },
     onApprove() {
-      if (
-        !this.errorText
-        && this.title.trim()
-      ) {
-        this.editmode = false;
+      if (this.initTitle.trim() === "")
+        return this.$emit('approve', this.currentTitle);
+
+      if (this.currentTitle.trim() === this.initTitle.trim()) {
+        this.$emit('cancel');
       } else {
-        this.$emit("approve", this.value);
+        this.$emit('approve', this.currentTitle);
       }
-    }
+    },
+    onCancel() {
+      if (this.initTitle.trim() === "") {
+        this.$emit('remove');
+      } else {
+        this.currentTitle = this.initTitle;
+        this.$emit('cancel');
+      }
+    },
   },
   components: {
     icon: () => import("components/icon"),

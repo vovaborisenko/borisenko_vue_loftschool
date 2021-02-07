@@ -1,9 +1,9 @@
 <template>
-  <component 
+  <component
     :is="type"
     v-bind="$attrs"
     v-on="$listeners"
-  /> 
+  />
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     type: {
       type: String,
       default: "default"
-    }
+    },
   },
   components: {
     default: () => import("./types/defaultBtn"),
