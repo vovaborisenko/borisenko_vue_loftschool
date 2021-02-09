@@ -36,7 +36,7 @@ export default {
     return {
       skill: {
         title: '',
-        percent: '100',
+        percent: '0',
         blocked: false,
       }
     }

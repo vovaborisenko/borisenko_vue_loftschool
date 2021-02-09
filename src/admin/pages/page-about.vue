@@ -135,7 +135,7 @@ export default {
         // очищает поля ввода добавления скила
         addingSkill.validation.reset();
         addingSkill.skill.title = '';
-        addingSkill.skill.percent = '100';
+        addingSkill.skill.percent = '0';
       } catch (e) {
         this.showNotification({type: 'error', text: e.message});
       } finally {

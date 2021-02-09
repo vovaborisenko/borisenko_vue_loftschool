@@ -60,6 +60,7 @@ export default {
   methods: {
     ...mapActions({
       showNotification: 'notification/show',
+      saveUserId: 'user/fetchId',
     }),
     async handlerSubmit() {
       if (await this.$validate() === false) return;
@@ -73,6 +74,7 @@ export default {
         localStorage.setItem('token', token);
         $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
 
+        await this.saveUserId();
         await this.$router.replace('/');
       } catch (error) {
         this.showNotification({type: 'error', text: error.response.data.error});
