@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import categories from './modules/categories';
 import skills from './modules/skills';
 import notification from './modules/notification';
+import user from "./modules/user";
 
 Vue.use(Vuex);
 
@@ -12,5 +13,6 @@ export default new Vuex.Store({
     categories,
     skills,
     notification,
+    user,
   },
 });
