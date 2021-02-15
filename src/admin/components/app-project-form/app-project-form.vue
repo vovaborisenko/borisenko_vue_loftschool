@@ -17,6 +17,7 @@
               app-button.project-form__upload(
                 typeAttr="file"
                 title="ЗАГРУЗИТЬ"
+                accept="image/*"
                 @change="loadPreview"
               )
         .project-form__box
@@ -62,6 +63,7 @@ import Card from 'components/card/card';
 import AppButton from "components/button/button";
 import AppInput from "components/input/input";
 import AppTagsInput from "components/app-tags-input/app-tags-input";
+import {mapActions} from "vuex";
 
 export default {
   name: 'app-project-form',
@@ -94,15 +96,23 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      showNotification: 'notification/show',
+    }),
     loadPreview(event) {
       const file = event.dataTransfer
         ? event.dataTransfer.files[0]
         : event.target.files[0];
-      const reader = new FileReader();
 
-      reader.readAsDataURL(file);
-      reader.onload = () => this.preview = reader.result;
-      this.photo = file;
+      if (file.type.indexOf('image/') === 0) {
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+        reader.onload = () => this.preview = reader.result;
+        this.photo = file;
+      } else {
+        this.showNotification({type: 'error', text: 'Загружать можно только файлы изображений'});
+      }
       this.hoveredOver = false;
     },
     async onSubmit(event) {
