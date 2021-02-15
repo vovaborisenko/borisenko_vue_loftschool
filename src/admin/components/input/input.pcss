@@ -1,10 +1,10 @@
 .input__error-tooltip {
-  display: none;
   position: absolute;
   top: 100%;
-  left: 30%;
-  transform: translateX(-50%);
+  left: 0;
   z-index: 100;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .input {
@@ -72,7 +72,9 @@
   }
 
   .input__error-tooltip {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.2s;
   }
 }
 
@@ -87,10 +89,11 @@
 }
 
 .textarea__elem {
-  height: 150px;
+  display: block;
+  min-height: 150px;
   padding: 20px;
   border: 1px solid rgba($color-text-admin, 0.2);
-  resize: none;
+  resize: vertical;
   font-weight: 600;
   margin-top: 10px;
   width: 100%;

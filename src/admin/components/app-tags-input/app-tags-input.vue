@@ -1,7 +1,7 @@
 <template lang="pug">
   .tags-input
     app-input(
-      title="Добавление тега"
+      v-bind="$props"
       v-model="currentTags"
       @input="$emit('change', currentTags)"
     )
@@ -26,7 +26,24 @@ export default {
   name: 'app-tags-input',
   components: {Tag, AppInput },
   props: {
+    /**
+     * Задает первоначальное значение для v-model
+     */
     tags: {
+      type: String,
+      default: '',
+    },
+    /**
+     * Название поля (label)
+     */
+    title: {
+      type: String,
+      default: '',
+    },
+    /**
+     * Сообщение об ошибке
+     */
+    errorMessage: {
       type: String,
       default: '',
     },
@@ -77,6 +94,7 @@ export default {
 
   &__item {
     margin-left: 10px;
+    margin-bottom: 10px;
   }
 }
 </style>

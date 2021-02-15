@@ -1,6 +1,6 @@
 <template lang="pug">
   view-admin-page
-    view-content(:title="`Блок \"Обо мне\"`")
+    view-content(title="Блок «Обо мне»")
       template(v-slot:header)
         iconed-btn(
           v-show="!newCategory"
@@ -10,11 +10,13 @@
         )
 
       // page content
-      h2.loading(v-if="loading"
-      ) Загрузка...
-      h2.loading(v-else-if="!categories.length"
-      ) Чтобы добавить навык нажмите на кнопку "Добавить группу"
-      ul.categories(v-else)
+      template(v-if="!newCategory")
+        h2.loading(v-if="loading"
+        ) Загрузка...
+        h2.loading(v-else-if="!categories.length"
+        ) Чтобы добавить навык нажмите на кнопку "Добавить группу"
+
+      ul.categories
         li.categories__item(v-if="newCategory")
           app-category(
             empty

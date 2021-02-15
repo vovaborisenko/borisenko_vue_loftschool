@@ -5,10 +5,22 @@ Vue.use(VueRouter);
 
 const PageAbout = () => import("../pages/page-about.vue");
 const PageLogin = () => import("../pages/page-login.vue");
+const PageProjects = () => import("../pages/page-projects.vue");
 
 const routes = [
   {
     path: '/',
+    name: 'about',
+    component: PageAbout,
+  },
+  {
+    path: '/projects',
+    name: 'projects',
+    component: PageProjects,
+  },
+  {
+    path: '/reviews',
+    name: 'reviews',
     component: PageAbout,
   },
   {

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import categories from './modules/categories';
 import skills from './modules/skills';
+import projects from './modules/projects';
 import notification from './modules/notification';
 import user from "./modules/user";
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
   modules: {
     categories,
     skills,
+    projects,
     notification,
     user,
   },
