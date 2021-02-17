@@ -4,8 +4,11 @@
 
       // page content
       app-project-form(
-        v-if="newProject"
-        @cancel="newProject = false"
+        v-if="showForm"
+        :project="editedProject"
+        :saving="projectSaving"
+        @cancel="showForm = false"
+        @save="applyProject"
       )
 
       h2.loading(v-if="loading") Загрузка...
@@ -14,37 +17,58 @@
           square-btn(
             type="square"
             title="Добавить работу"
-            @click="newProject = true"
+            @click="onNewProject"
           )
         li.projects__item(
           v-for="project in projects"
           :key="project.id"
         )
+          app-project(
+            :title="project.title"
+            :description="project.description"
+            :link="project.link"
+            :tags="project.techs"
+            :photo="project.photo"
+            :blocked="project.id === editedProject.id"
+            @delete="onDelete(project)"
+            @edit="onEdit(project)"
+          )
 </template>
 
 <script>
 import IconedBtn from 'components/button/types/iconedBtn/iconedBtn';
-import AppCategory from 'components/app-category';
 import ViewContent from './../views/view-content.vue';
 import ViewAdminPage from './../views/view-admin-page.vue';
-import { mapGetters, mapActions, mapMutations } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import SquareBtn from 'components/button/types/squareBtn/squareBtn';
 import AppProjectForm from 'components/app-project-form/app-project-form';
+import AppProject from "components/app-category/app-project";
+
+const defaultProject = {
+  id: 0,
+  title: '',
+  link: '',
+  description: '',
+  photo: null,
+  techs: '',
+};
 
 export default {
-  name: 'page-about',
+  name: 'page-projects',
   components: {
+    AppProject,
     AppProjectForm,
     SquareBtn,
     ViewAdminPage,
     ViewContent,
-    AppCategory,
     IconedBtn,
   },
   data() {
     return {
       loading: false,
-      newProject: false,
+      showForm: false,
+      projectSaving: false,
+      editedProject: defaultProject,
     };
   },
   computed: {
@@ -60,50 +84,61 @@ export default {
       fetchProjectsAction: 'projects/fetch',
       showNotification: 'notification/show',
     }),
-    async createProject(project) {
-      project.blocked = true;
+    async applyProject(project) {
+      const formData = new FormData();
+
+      for (let key of Object.keys(project)) {
+        formData.append(key, project[key]);
+      }
+
+      this.projectSaving = true;
 
       try {
-        await this.createProjectAction(project);
-
-        this.showNotification({type: 'success', text: 'Работа добавлена'});
-        this.newProject = false;
+        if (project.id) {
+          await this.editProjectAction({ formData, id: project.id });
+          this.showNotification({type: 'success', text: 'Работа изменена'});
+        } else {
+          await this.createProjectAction(formData);
+          this.showNotification({type: 'success', text: 'Работа добавлена'});
+        }
+        this.showForm = false;
       } catch (e) {
         this.showNotification({type: 'error', text: e.message});
       } finally {
-        project.blocked = false;
+        this.projectSaving = false;
+        this.editedProject = defaultProject;
       }
     },
-    async saveCategory(project, projectId) {
-      project.blocked = true;
-
-      try {
-        await this.editProjectAction({
-          id: projectId,
-          ...project,
-        });
-
-        this.showNotification({type: 'success', text: 'Работа изменена'});
-        project.editMode = false;
-      } catch (e) {
-        this.showNotification({type: 'error', text: e.message});
-      } finally {
-        project.blocked = false;
-      }
-    },
-    async deleteCategory(project, id) {
+    async onDelete(project) {
       if (confirm(`Вы уверены, что хотите удалить работу: "${project.title}"?`)) {
-        project.deleting = true;
+        this.editedProject = project;
 
         try {
-          await this.deleteProjectAction(id);
-
-          this.showNotification({type: 'success', text: 'Группа удалена'});
+          await this.deleteProjectAction(project.id);
+          this.showNotification({type: 'success', text: 'Работа удалена'});
         } catch (e) {
           this.showNotification({type: 'error', text: e.message});
         } finally {
-          project.deleting = false;
+          this.editedProject = defaultProject;
         }
+      }
+    },
+    onEdit(project) {
+      if (!this.showForm) {
+        this.editedProject = project;
+        this.showForm = true;
+      } else {
+        const text = this.editedProject.id ? 'Завершите редактирование работы' : 'Завершите создание работы';
+        this.showNotification({type: 'warning', text});
+      }
+    },
+    onNewProject() {
+      if (!this.showForm) {
+        this.editedProject = defaultProject;
+        this.showForm = true;
+      } else {
+        const text = this.editedProject.id ? 'Завершите редактирование работы' : 'Завершите создание работы';
+        this.showNotification({type: 'warning', text});
       }
     },
   },

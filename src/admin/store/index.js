@@ -4,7 +4,7 @@ import categories from './modules/categories';
 import skills from './modules/skills';
 import projects from './modules/projects';
 import notification from './modules/notification';
-import user from "./modules/user";
+import user from './modules/user';
 
 Vue.use(Vuex);
 

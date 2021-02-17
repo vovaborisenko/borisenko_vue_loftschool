@@ -1,11 +1,11 @@
 <template lang="pug">
-  card(title="Редактирование работы")
+  card(:title="cardTitle")
     template(slot="content")
       form.project-form(@submit.prevent="onSubmit")
         .project-form__box
           label.project-form__preview(
             :class="{'project-form__preview--hovered-over': hoveredOver}"
-            :style="{backgroundImage: `url(${preview})`}"
+            :style="{backgroundImage: preview && `url(${preview})`}"
             @dragleave="hoveredOver = false"
             @dragover.prevent="hoveredOver = true"
             @drop.prevent="loadPreview"
@@ -52,22 +52,28 @@
             app-button.project-form__button(
               title="Сохранить"
               typeAttr="submit"
-              @click="onSubmit"
+              :disabled="saving"
             )
 
 </template>
 
 <script>
 import { Validator } from 'simple-vue-validator';
+import { mapActions } from 'vuex';
 import Card from 'components/card/card';
-import AppButton from "components/button/button";
-import AppInput from "components/input/input";
-import AppTagsInput from "components/app-tags-input/app-tags-input";
-import {mapActions} from "vuex";
+import AppButton from 'components/button/button';
+import AppInput from 'components/input/input';
+import AppTagsInput from 'components/app-tags-input/app-tags-input';
 
 export default {
   name: 'app-project-form',
   components: { AppTagsInput, AppInput, AppButton, Card },
+  props: {
+    project: {
+      type: Object,
+    },
+    saving: Boolean,
+  },
   validators: {
     title: function(value) {
       return Validator.value(value).required('Название не может быть пустым');
@@ -87,13 +93,19 @@ export default {
   data() {
     return {
       hoveredOver: false,
-      preview: null,
-      title: '',
-      techs: '',
-      photo: '',
-      link: '',
-      description: '',
+      id: this.project.id,
+      preview: this.project.photo && `${this.$root.baseURL}/${this.project.photo}`,
+      title: this.project.title,
+      techs: this.project.techs,
+      photo: null,
+      link: this.project.link,
+      description: this.project.description,
     };
+  },
+  computed: {
+    cardTitle() {
+      return this.project.id ? 'Редактирование работы' : 'Создание работы';
+    }
   },
   methods: {
     ...mapActions({
@@ -111,13 +123,21 @@ export default {
         reader.onload = () => this.preview = reader.result;
         this.photo = file;
       } else {
-        this.showNotification({type: 'error', text: 'Загружать можно только файлы изображений'});
+        this.showNotification({type: 'warning', text: 'Загружать можно только файлы изображений'});
       }
       this.hoveredOver = false;
     },
     async onSubmit(event) {
       if (await this.$validate() === false) return;
-      console.log(event);
+
+      this.$emit('save', {
+        id: this.id,
+        title: this.title,
+        techs: this.techs,
+        photo: this.photo,
+        link: this.link,
+        description: this.description,
+      });
     },
     onCancel(event) {
       this.$emit('cancel');

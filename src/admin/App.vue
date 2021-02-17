@@ -49,6 +49,7 @@ html {
   transform: translateX(-50%);
   max-width: 50%;
   transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 10;
 
   &--active {
     transform: translate(-50%, calc(-100% - 20px));

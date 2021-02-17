@@ -4,34 +4,26 @@ export default {
     data: [],
   },
   mutations: {
-    ADD_PROJECT: (state, category) => {
-      state.data = [ { ...category, skills: [] }, ...state.data ];
+    ADD_PROJECT: (state, project) => {
+      state.data = [ ...state.data, project ];
     },
-    EDIT_PROJECT: (state, payload) => {
-      state.data = state.data.map(item => {
-        if (item.id === payload.id) {
-          const { category } = payload;
-
-          return { ...item, category };
-        }
-
-        return item;
-      });
+    EDIT_PROJECT: (state, project) => {
+      state.data = state.data.map(item => (item.id === project.id
+        ? { ...project }
+        : item));
     },
     DELETE_PROJECT: (state, id) => {
       state.data = state.data.filter(item => item.id !== id);
     },
-    SET_PROJECTS: (state, categories) => {
-      state.data = categories.map(item => {
-        return { skills: [], ...item }
-      });
+    SET_PROJECTS: (state, projects) => {
+      state.data = projects;
     },
   },
   actions: {
     // создает работу-проект
-    async create({ commit }, project) {
+    async create({ commit }, formData) {
       try {
-        const { data } = await this.$axios.post('/works', project );
+        const { data } = await this.$axios.post('/works', formData );
 
         commit('ADD_PROJECT', data);
       } catch (e) {
@@ -39,12 +31,12 @@ export default {
       }
     },
     // изменяет проект
-    async edit({ commit }, project) {
-      const { id } = project;
+    async edit({ commit }, payload) {
+      const { formData, id } = payload;
       try {
-        const { data } = await this.$axios.post(`/works/${id}`, project);
+        const { data } = await this.$axios.post(`/works/${id}`, formData);
 
-        commit('EDIT_PROJECT', data.project);
+        commit('EDIT_PROJECT', data.work);
       } catch (e) {
         throw new Error('Сохранить изменения не удалось');
       }
@@ -61,7 +53,7 @@ export default {
     },
     // получает все проекты
     async fetch({ commit, rootGetters }) {
-      const userId = rootGetters["user/id"];
+      const userId = rootGetters['user/id'];
 
       try {
         const { data } = await this.$axios.get(`/works/${userId}`);

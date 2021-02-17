@@ -16,7 +16,7 @@
         h2.loading(v-else-if="!categories.length"
         ) Чтобы добавить навык нажмите на кнопку "Добавить группу"
 
-      ul.categories
+      ul.categories(v-if="!loading")
         li.categories__item(v-if="newCategory")
           app-category(
             empty
