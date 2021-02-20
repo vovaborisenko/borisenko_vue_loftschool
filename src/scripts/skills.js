@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import axios from 'axios';
+import config from './../../env.paths.json';
 
 const SkillsListItem = {
   props: ['title', 'percent'],
@@ -28,7 +30,13 @@ new Vue({
   data: () => ({
     skillsGroups: [],
   }),
-  created() {
-    this.skillsGroups = require('./../data/skills.json');
+  async created() {
+    try {
+      const { data } = await axios.get(`${config.BASE_URL}/categories/431`);
+
+      this.skillsGroups = data;
+    } catch (e) {
+      this.skillsGroups = require('./../data/skills.json');
+    }
   }
 });

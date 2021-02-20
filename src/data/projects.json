@@ -2,73 +2,65 @@
   {
     "id": 1,
     "title": "1 Сайт школы образования",
-    "content": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "description": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS", "Javascript"],
-    "image": "slide-1.jpg",
-    "preview": "slide-1.jpg"
+    "techs": "HTML, CSS, Javascript",
+    "photo": "slide-1.jpg"
   },
   {
     "id": 12,
     "title": "2 Сайт школы образования",
-    "content": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "description": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS", "Javascript", "Vuejs"],
-    "image": "slide-2.jpg",
-    "preview": "slide-2.jpg"
+    "techs": "HTML, CSS, Javascript, Vuejs",
+    "photo": "slide-2.jpg"
   },
   {
     "id": 31,
     "title": "3 Сайт школы образования",
-    "content": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "description": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS", "Javascript", "Reactjs"],
-    "image": "slide-3.jpg",
-    "preview": "slide-3.jpg"
+    "techs": "HTML, CSS, Javascript, Reactjs",
+    "photo": "slide-3.jpg"
   },
   {
     "id": 42,
     "title": "4 Сайт школы образования",
-    "content": "4 Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
+    "description": "4 Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS"],
-    "image": "slide-4.jpg",
-    "preview": "slide-4.jpg"
+    "techs": "HTML, CSS",
+    "photo": "slide-4.jpg"
   },
   {
-    "id": 15,
+    "id": 51,
     "title": "1 Сайт школы образования",
-    "content": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "description": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS", "Javascript"],
-    "image": "slide-1.jpg",
-    "preview": "slide-1.jpg"
+    "techs": "HTML, CSS, Javascript",
+    "photo": "slide-1.jpg"
   },
   {
-    "id": 69,
+    "id": 152,
     "title": "2 Сайт школы образования",
-    "content": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "description": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS", "Javascript", "Vuejs"],
-    "image": "slide-2.jpg",
-    "preview": "slide-2.jpg"
+    "techs": "HTML, CSS, Javascript, Vuejs",
+    "photo": "slide-2.jpg"
   },
   {
-    "id": 17,
+    "id": 315,
     "title": "3 Сайт школы образования",
-    "content": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "description": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS", "Javascript", "Reactjs"],
-    "image": "slide-3.jpg",
-    "preview": "slide-3.jpg"
+    "techs": "HTML, CSS, Javascript, Reactjs",
+    "photo": "slide-3.jpg"
   },
   {
-    "id": 8,
+    "id": 425,
     "title": "4 Сайт школы образования",
-    "content": "4 Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
+    "description": "4 Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
     "link": "https://github.com/vovaborisenko",
-    "tags": ["HTML", "CSS"],
-    "image": "slide-4.jpg",
-    "preview": "slide-4.jpg"
+    "techs": "HTML, CSS",
+    "photo": "slide-4.jpg"
   }
 ]

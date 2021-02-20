@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import axios from 'axios';
+import config from './../../env.paths.json';
 
 const ProjectDesc = {
   props: ['title', 'description', 'link', 'tags'],
@@ -24,7 +26,7 @@ new Vue({
     },
     activeSlide() {
       return {
-        imagePath: this.currentProject?.imagePath,
+        imageURL: this.currentProject?.imageURL,
         id: this.currentProject?.id,
         isFirst: this.currentIndex === 0,
         isLast: this.currentIndex === this.projects.length - 1,
@@ -34,7 +36,7 @@ new Vue({
       return this.projects.length
         ? this.projects
             .map((item) => ({
-              previewPath: item.previewPath,
+              imageURL: item.imageURL,
               id: item.id,
             }))
             .filter((item, index, array) => {
@@ -55,19 +57,35 @@ new Vue({
     }
   },
   methods: {
-    getProjects() {
-      const projects = require('./../data/projects.json');
+    async getProjects() {
 
-      return projects.map((item) => {
-        const imagePath = require(`images/content/${item.image}`).default;
-        const previewPath = require(`images/content/${item.preview}`).default;
+      try {
+        const { data } = await axios.get(`${config.BASE_URL}/works/431`);
 
-        return {
-          ...item,
-          imagePath,
-          previewPath,
-        };
-      });
+        this.projects = data.map((item) => {
+          const imageURL = `${config.BASE_URL}/${item.photo}`;
+          const tags = item.techs.split(',');
+
+          return {
+            ...item,
+            imageURL,
+            tags
+          };
+        });
+      } catch (e) {
+        const projects = require('./../data/projects.json');
+
+        this.projects = projects.map((item) => {
+          const imageURL = require(`images/content/${item.photo}`).default;
+          const tags = item.techs.split(',');
+
+          return {
+            ...item,
+            imageURL,
+            tags
+          };
+        });
+      }
     },
     nextSlide() {
       this.currentIndex++;
@@ -80,6 +98,6 @@ new Vue({
     },
   },
   created() {
-    this.projects = this.getProjects();
+    this.getProjects();
   }
 });

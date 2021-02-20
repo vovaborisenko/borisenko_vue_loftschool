@@ -15,7 +15,7 @@ script(type="text/x-template")#projects-widget
         .projects__desc
           project-desc(
             :title="currentProject.title"
-            :description="currentProject.content"
+            :description="currentProject.description"
             :link="currentProject.link"
             :tags="currentProject.tags"
           )
@@ -36,14 +36,14 @@ script(type="text/x-template")#projects-slider
   .slider
     .slider__list
       .slider__item(:data-index="activeNumber")
-        img.slider__img(:src="activeSlide.imagePath")
+        img.slider__img(:src="activeSlide.imageURL")
     .slider__previews
       button.slider__preview(
         v-for="(preview, key) in previews"
         :class="{ 'slider__preview--active': preview.id === activeSlide.id }"
         @click="$emit('choose-slide', preview.id)"
       )
-        img(:src="preview.previewPath")
+        img(:src="preview.imageURL")
     .slider__actions
       button.slider__button.btn.btn--rect(
         type="button"
