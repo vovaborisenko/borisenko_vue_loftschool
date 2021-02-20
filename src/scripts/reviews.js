@@ -1,5 +1,7 @@
 import Vue from 'vue';
+import axios from 'axios';
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper';
+import config from './../../env.paths.json';
 import 'swiper/swiper-bundle.css';
 
 const ReviewsItemAuthor = {
@@ -8,7 +10,7 @@ const ReviewsItemAuthor = {
 };
 
 const ReviewsItem = {
-  props: ['content', 'author'],
+  props: ['review'],
   template: '#reviews-item',
   components: { ReviewsItemAuthor },
 };
@@ -33,7 +35,7 @@ new Vue({
         }
       }
     },
-    isDisabledPrevButton: false,
+    isDisabledPrevButton: true,
     isDisabledNextButton: false,
   }),
   computed: {
@@ -42,16 +44,25 @@ new Vue({
     },
   },
   methods: {
-    getReviews() {
-      const incomeReviews = require('./../data/reviews.json');
+    async getReviews() {
+      try {
+        const { data } = await axios.get(`${config.BASE_URL}/reviews/431`);
 
-      return incomeReviews.map((item) => {
-        const avatarPath = require(`images/content/${item.author.avatar}`).default;
+        this.reviews = data.map((item) => {
+          const avatarURL = `${config.BASE_URL}/${item.photo}`;
 
-        item.author.avatarPath = avatarPath;
+          return { ...item, avatarURL };
+        });
+      } catch (e) {
+        const incomeReviews = require('./../data/reviews.json');
 
-        return item;
-      });
+        this.reviews = incomeReviews.map((item) => {
+          const avatarURL = require(`images/content/${item.photo}`).default;
+
+          return { ...item, avatarURL };
+        });
+      }
+
     },
     prevSlide() {
       this.swiper.slidePrev();
@@ -60,7 +71,6 @@ new Vue({
       this.swiper.slideNext();
     },
     initSwiper() {
-      this.checkDisabledButtons();
       this.swiper.on('slideChange', this.checkDisabledButtons);
     },
     destroySwiper() {
@@ -72,7 +82,7 @@ new Vue({
     }
   },
   created() {
-    this.reviews = this.getReviews();
+    this.getReviews();
   },
   mounted() {
     this.initSwiper();

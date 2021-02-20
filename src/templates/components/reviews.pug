@@ -25,20 +25,19 @@ script(type="text/x-template")#reviews-widget
           :key="review.id"
         )
           reviews-item(
-            :content="review.content"
-            :author="review.author"
+            :review="review"
           )
 
 script(type="text/x-template")#reviews-item
   .review
     +icon('quote').review__decor
     .review__content
-      p {{ content }}
+      p {{ review.text }}
     .review__author
       reviews-item-author(
-        :name="author.name"
-        :desc="author.desc"
-        :avatar="author.avatarPath"
+        :name="review.author"
+        :desc="review.occ"
+        :avatar="review.avatarURL"
       )
 
 script(type="text/x-template")#reviews-item-author

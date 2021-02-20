@@ -95,7 +95,7 @@ export default {
     },
     // получает все категории со скилами
     async fetch({ commit, rootGetters }) {
-      const userId = rootGetters["user/id"];
+      const userId = rootGetters['user/id'];
 
       try {
         const { data } = await this.$axios.get(`/categories/${userId}`);

@@ -7,18 +7,19 @@
             v-for="item in items"
             :key="item.id"
           )
-            a.app-navigation__link(
-              :class="{ 'app-navigation__link--active': item.isActive }"
-              :href="item.alias"
+            router-link.app-navigation__link(
+              exact-active-class="app-navigation__link--active"
+              :to="{name: item.alias}"
             ) {{ item.title }}
 </template>
 
 <script>
 const items = [
-  {id: 2, title: "Обо мне", alias: "about", isActive: false},
-  {id: 5, title: "Работы", alias: "projects", isActive: true},
-  {id: 12, title: "Отзывы", alias: "reviews", isActive: false},
+  {id: 2, title: "Обо мне", alias: "about"},
+  {id: 5, title: "Работы", alias: "projects"},
+  {id: 12, title: "Отзывы", alias: "reviews"},
 ];
+
 export default {
   name: 'app-navigation',
   data: () => ({

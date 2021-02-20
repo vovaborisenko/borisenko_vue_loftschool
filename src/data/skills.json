@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Front-end",
+    "category": "Front-end",
     "skills": [
       {
         "id": 1,
@@ -27,7 +27,7 @@
   },
   {
     "id": 2,
-    "title": "Workflow",
+    "category": "Workflow",
     "skills": [
       {
         "id": 1,

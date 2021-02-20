@@ -5,7 +5,7 @@ script(type="text/x-template")#skills-widget
       p.useful__content Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
       .useful__box(v-for="skillsGroup in skillsGroups" :key="skillsGroup.id")
         skills-list(
-          :title="skillsGroup.title"
+          :title="skillsGroup.category"
           :skills="skillsGroup.skills"
         )
 

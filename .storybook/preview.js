@@ -7,7 +7,7 @@ Vue.use(SimpleVueValidator, {mode: 'conservative'});
 export const parameters = {
   backgrounds: {
     values: [
-      { name: 'white', value: '#ffffff', default: true },
+      { name: 'white', value: '#ffffff' },
       { name: 'grey', value: '#8395a7' },
     ],
   },

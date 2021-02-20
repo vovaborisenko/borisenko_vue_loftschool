@@ -11,7 +11,9 @@
   "color-background-headline": "#43436B",
   "color-tag": "#f3f6f9",
   "color-link": "#586ed3",
-  "color-error": "#db0200",
+  "color-success": "#61bd4f",
+  "color-error": "#eb5a46",
+  "color-warning": "#f2d600",
 
   "bp-desktop-hd": "1600px",
   "bp-desktop": "1200px",

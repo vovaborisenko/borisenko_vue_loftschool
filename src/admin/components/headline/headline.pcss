@@ -1,3 +1,5 @@
+@import "./../../../styles/mixins.pcss";
+
 .headline-component {
   color: $color-text;
   background-color: $color-background-headline;
@@ -15,10 +17,15 @@
   }
 
   &__title {
-    margin-top: 4px;
-    margin-right: 20px;
-    font-size: 14px;
-    opacity: 0.5;
+    display: none;
+
+    @include tablets {
+      display: block;
+      margin-top: 4px;
+      margin-right: 20px;
+      font-size: 14px;
+      opacity: 0.5;
+    }
   }
 
   &__actions {
