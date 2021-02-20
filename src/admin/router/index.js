@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 const PageAbout = () => import("../pages/page-about.vue");
 const PageLogin = () => import("../pages/page-login.vue");
 const PageProjects = () => import("../pages/page-projects.vue");
+const PageReviews = () => import("../pages/page-reviews.vue");
 
 const routes = [
   {
@@ -24,7 +25,7 @@ const routes = [
   {
     path: '/reviews',
     name: 'reviews',
-    component: PageAbout,
+    component: PageReviews,
   },
   {
     path: '/login',

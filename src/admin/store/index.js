@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import categories from './modules/categories';
 import skills from './modules/skills';
 import projects from './modules/projects';
+import reviews from './modules/reviews';
 import notification from './modules/notification';
 import user from './modules/user';
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     categories,
     skills,
     projects,
+    reviews,
     notification,
     user,
   },
