@@ -90,7 +90,8 @@ export default {
       return Validator.value(value).required('Напишите пару используемых технологий через запятую');
     },
     photo: function(value) {
-      return Validator.value(value).required('Добавьте фото');
+      return Validator.value(value || this.preview).required('Добавьте фото');
+
     },
   },
   data() {

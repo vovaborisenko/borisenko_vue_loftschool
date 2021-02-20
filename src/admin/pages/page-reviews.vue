@@ -161,3 +161,34 @@ export default {
   },
 }
 </script>
+
+<style lang="postcss">
+@import "./../../styles/mixins.pcss";
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  margin-top: 25px;
+
+  @include tablets {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+  }
+
+  @include desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vmin;
+  padding: 40px;
+  text-align: center;
+  opacity: 0.7;
+}
+</style>
+
