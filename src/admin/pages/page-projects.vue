@@ -7,7 +7,7 @@
         v-if="showForm"
         :project="editedProject"
         :saving="projectSaving"
-        @cancel="showForm = false"
+        @cancel="closeForm"
         @save="applyProject"
       )
 
@@ -42,7 +42,7 @@ import ViewAdminPage from './../views/view-admin-page.vue';
 import { mapGetters, mapActions } from 'vuex';
 import SquareBtn from 'components/button/types/squareBtn/squareBtn';
 import AppProjectForm from 'components/app-project-form/app-project-form';
-import AppProject from "components/app-category/app-project";
+import AppProject from "components/app-project/app-project";
 
 const defaultProject = {
   id: 0,
@@ -84,6 +84,10 @@ export default {
       fetchProjectsAction: 'projects/fetch',
       showNotification: 'notification/show',
     }),
+    closeForm() {
+      this.showForm = false;
+      this.editedProject = defaultProject;
+    },
     async applyProject(project) {
       const formData = new FormData();
 
@@ -157,11 +161,22 @@ export default {
 </script>
 
 <style lang="postcss">
+@import "./../../styles/mixins.pcss";
+
 .projects {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 25px;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
   margin-top: 25px;
+
+  @include tablets {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+  }
+
+  @include desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .loading {

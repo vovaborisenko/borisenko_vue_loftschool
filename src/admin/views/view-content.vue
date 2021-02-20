@@ -21,20 +21,33 @@ export default {
 </script>
 
 <style lang="postcss">
+@import "./../../styles/mixins.pcss";
+
 .content {
   &__header {
-    display: flex;
+    @include tablets {
+      display: flex;
+    }
   }
 
   &__title {
-    margin-right: 54px;
+    margin-bottom: 24px;
     font-size: 21px;
     line-height: 29px;
     font-weight: 700;
+
+    @include tablets {
+      margin-bottom: 0;
+      margin-right: 54px;
+    }
   }
 
   &__main {
-    margin-top: 54px;
+    margin: 34px -30px 0;
+
+    @include tablets {
+      margin: 54px 0 0;
+    }
   }
 }
 </style>

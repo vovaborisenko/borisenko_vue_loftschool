@@ -4,7 +4,7 @@
       form.project-form(@submit.prevent="onSubmit")
         .project-form__box
           label.project-form__preview(
-            :class="{'project-form__preview--hovered-over': hoveredOver}"
+            :class="previewClassNames"
             :style="{backgroundImage: preview && `url(${preview})`}"
             @dragleave="hoveredOver = false"
             @dragover.prevent="hoveredOver = true"
@@ -89,6 +89,9 @@ export default {
     techs: function(value) {
       return Validator.value(value).required('Напишите пару используемых технологий через запятую');
     },
+    photo: function(value) {
+      return Validator.value(value).required('Добавьте фото');
+    },
   },
   data() {
     return {
@@ -105,7 +108,13 @@ export default {
   computed: {
     cardTitle() {
       return this.project.id ? 'Редактирование работы' : 'Создание работы';
-    }
+    },
+    previewClassNames() {
+      return {
+        'project-form__preview--hovered-over': this.hoveredOver,
+        'project-form__preview--error': this.validation.hasError('photo'),
+      };
+    },
   },
   methods: {
     ...mapActions({
@@ -147,12 +156,18 @@ export default {
 </script>
 
 <style lang="postcss">
+@import "./../../../styles/mixins.pcss";
+
 .project-form {
   $block: &;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 35px;
   width: 100%;
+
+  @include desktop {
+    grid-template-columns: 1fr 1fr;
+  }
 
   &__preview {
     position: relative;
@@ -180,6 +195,11 @@ export default {
         }
       }
     }
+
+    &--error {
+      border-color: $color-error;
+    }
+
   }
 
   &__preview-overlay {

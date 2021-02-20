@@ -200,10 +200,16 @@ export default {
 </script>
 
 <style lang="postcss">
+@import "./../../styles/mixins.pcss";
+
 .categories {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 25px;
+
+  @include tablets {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .loading {
