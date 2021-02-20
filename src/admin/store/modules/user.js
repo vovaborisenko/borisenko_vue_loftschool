@@ -20,6 +20,9 @@ export default {
     login({ commit }, user) {
       commit('SET_USER', user);
     },
+    logout({ commit }) {
+      commit('CLEAR_USER');
+    },
   },
   getters: {
     id: state => state.data.id,
